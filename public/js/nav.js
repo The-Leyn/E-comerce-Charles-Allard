@@ -1,5 +1,3 @@
-console.log("Hello World !!!");
-
 // Scroll de la nav
 
 const navBar = document.querySelector("nav");
@@ -32,13 +30,10 @@ window.addEventListener("scroll", () => {
 // Toggle de la nav
 
 const toggleBtnNav = document.querySelector(".burger-btn button");
-console.log(toggleBtnNav);
 
 const containerNavLinks = document.querySelector(".container-nav-links");
-console.log(containerNavLinks);
 
 const allNavSvg = document.querySelectorAll(".burger-btn button svg");
-console.log(allNavSvg);
 
 const fullScreen = document.querySelector(".full-screen");
 
