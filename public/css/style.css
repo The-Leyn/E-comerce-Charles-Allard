@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS */
+  --primary-color: #fff;
+  --secondary-color: #000;
+  --test-background: purple;
+
+  /* FONTS */
+  --ubuntu-font: "Ubuntu", sans-serif;
+  --libre-bodoni-font: "Libre Bodoni", serif;
+
+  /* FONTS SIZE */
+  --fz-16: 1rem;
+}
+/* ALL PAGES */
+body {
+  background: var(--test-background) !important;
+}
+.full-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+.hide {
+  display: none!important;
+}
+/* NAVBAR */
+nav {
+  width: 100%;
+  height: 72px;
+  background: var(--primary-color);
+  /* background: lightblue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+nav a, .container-base-nav-links button  {
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.container-nav-links, .user-nav-links, .container-base-nav-links, .container-watches-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.container-nav-links a, .container-base-nav-links button  {
+  font-family: var(--ubuntu-font);
+  font-size: var(--fz-16);
+  font-weight: 400;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+.container-nav-links >a {
+  display: none;
+
+}
+.logo-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -41%);
+  z-index: 100;
+}
+#logo-mobile, .burger-btn, .container-base-nav-links button  {
+  display: none;
+}
+
+@media(max-width: 1500px) {
+  nav {
+    padding: 20px 40px;
+  }
+  .burger-btn, .container-nav-links a svg {
+    display: block;
+  }
+  .burger-btn button {
+    background: none;
+    border: none;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* .burger-btn svg:nth-of-type(2), .burger-btn svg:nth-of-type(3) {
+    display: none;
+  } */
+  .user-nav-links a:first-of-type {
+    display: none;
+  }
+  .container-nav-links {
+    position: absolute;
+    left: -65%;
+    /* left: 0; */
+    top: 0;
+    background: var(--primary-color);
+    height: 100vh;
+    width: 65%;
+    z-index: -1;
+    padding: 100px 40px 10px 40px;
+    align-items: flex-start;
+    gap: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .3s ease-out;
+  }
+  .open-links {
+    transform: translateX(100%);
+  }
+  .container-nav-links a, .container-base-nav-links button{
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .container-nav-links >a {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: var(--fz-16);
+  }
+  /* .container-base-nav-links button {
+    font-weight: 300;
+    font-family: var(--ubuntu-font);
+    background: none;
+    border: none;
+  } */
+  .container-base-nav-links, .container-watches-nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media(max-width: 770px) {
+  nav {
+    padding: 20px;
+  }
+  #logo-mobile {
+    display: block;
+  }
+  #logo-desktop {
+    display: none;
+  }
+  .logo-nav {
+    transform: translate(-50%, -50%);
+  }
+  .container-nav-links {
+    left: -100%;
+    width: 100%;
+    padding: 100px 20px 10px 20px;
+  }
+}
+
+/* END NAVBAR */
+/* END ALL PAGES */
+
+
+
+
+
