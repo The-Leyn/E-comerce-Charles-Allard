@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Charles Allard Histoire
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('css/history.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+	<section>
+		<div class="left-section">
+			<h2>Les Fondations de
+				<span>l'Excellence</span>
+			</h2>
+			<div class="description-section">
+				<p><strong>Charles Allard</strong> est né a Paris à la fin du 19ème siècle était fasciné par les montres et la façon dont elles pouvaient capturer le temps de manière si précise.</p>
+				<p>À l'âge de 18 ans, il commença son apprentissage chez un horloger renommé de la ville. Son talent naturel et son dévouement impressionnèrent rapidement son mentor, qui lui enseigna les secrets de l'artisanat avec enthousiasme.</p>
+				<p>Au fil des ans, il perfectionna son art et développa un style unique qui alliait tradition et innovation. Sa réputation grandissante attira l'attention de l'élite de la société parisienne, et bientôt ses montres étaient prisées par les collectionneurs du monde entier.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset('images/portrait_charles_allard.avif')}}" alt="">
+
+	</section>
+	<section>
+		<div class="left-section">
+			<h2>La Pérénnités de
+				<span>l'Héritage</span>
+			</h2>
+			<div class="description-section">
+				<p>En 1920, <strong>Charles Allard</strong> fonda sa propre marque de montres, déterminé à créer des pièces exceptionnelles qui incarneraient l'élégance intemporelle et la précision incomparable.</p>
+				<p>Sa vision audacieuse et son engagement envers l'excellence lui valurent rapidement une renommée internationale, et la marque <strong>Charles Allard</strong> devint synonyme de qualité et de prestige.</p>
+				<p><strong>Charles Allard</strong> s'éteignit paisiblement en 1975, laissant derrière lui un héritage durable dans le monde de l'horlogerie. Sa marque continue de prospérer, perpétuant son héritage de qualité, d'élégance et d'innovation pour les générations à venir.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset('images/Design_sketch_of_a_classic_simple_watch_monochrome_1500x1500.avif')}}" alt="">
+
+	</section>
+{% endblock %}

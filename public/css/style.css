@@ -20,9 +20,15 @@
 
   /* FONTS SIZE */
   --fz-16: 1rem;
+  --fz-18: 1.125rem;
   --fz-20: 1.25rem;
   --fz-22: 1.375rem;
   --fz-24: 1.5rem;
+  --fz-25: 1.563rem;
+  --fz-30: 1.875rem;
+  --fz-40: 2.5rem;
+  --fz-50: 3.125rem;
+  --fz-60: 3.75rem;
   /* FONTS WEIGHT */
   --fw-light: 300;
   --fw-regular: 400;
@@ -276,7 +282,7 @@ nav a, .container-base-nav-links button  {
   }
   @media(max-width: 1000px) {
     footer {
-      padding: 40px 20px;
+      padding: 40px;
       
     }
     .footer-bottom {
@@ -337,6 +343,12 @@ nav a, .container-base-nav-links button  {
       gap: 20px;
     }
     
+  }
+  @media(max-width: 770px) {
+    footer {
+      padding: 40px 20px;
+
+    }
   }
 /* END FOOTER */
 /* END ALL PAGES */
