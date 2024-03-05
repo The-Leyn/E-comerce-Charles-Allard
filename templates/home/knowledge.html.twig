@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Charles Allard Savoir-faire
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('css/history-knowledge.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+	<section>
+		<div class="left-section">
+			<h2>Découvrer notre
+				<span>Savoir-faire</span>
+			</h2>
+			<div class="description-section">
+				<p>Notre savoir-faire est ancré dans une tradition horlogère riche et une passion pour l'excellence. Chaque montre que nous créons est le résultat d'un processus méticuleux et d'un engagement indéfectible envers la qualité et l'innovation.</p>
+				<p>Nos maîtres horlogers, héritiers d'un savoir-faire transmis de génération en génération, mettent en œuvre leur expertise et leur minutie pour chaque étape de la fabrication de nos montres.</p>
+				<p>De la conception initiale à l'assemblage final, chaque détail est soigneusement considéré pour garantir un produit final d'une qualité exceptionnelle.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset('images/Design_sketch_of_a_classic_simple_watch_movement_4_1500x1500.avif')}}" alt="">
+
+	</section>
+	<section>
+		<div class="left-section">
+			<h2>Fabrication de
+				<span>Qualité</span>
+			</h2>
+			<div class="description-section">
+				<p>Façonnée par un engagement indéfectible envers l'excellence et la  précision. Chaque étape du processus de production est minutieusement  supervisée par nos artisans qualifiés, héritiers d'une tradition  horlogère séculaire.</p>
+				<p>La qualité est notre priorité absolue. Chaque montre <strong>CHARLES ALLARD</strong> est  soumise à des contrôles rigoureux tout au long de sa fabrication,  garantissant une précision et une fiabilité exceptionnelles.</p>
+				<p>De la  sélection des matériaux à l'assemblage final, aucun compromis n'est fait  en matière de qualité.</p>
+			</div>
+		</div>
+
+		<img src="{{ asset('images/Design_sketch_of_a_classic_simple_watch_movement_3_1500x1500.avif')}}" alt="">
+
+	</section>
+{% endblock %}

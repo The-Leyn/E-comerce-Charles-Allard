@@ -23,4 +23,11 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+    #[Route('/savoir-faire', name: 'app_knowledge')]
+    public function knowledge(): Response
+    {
+        return $this->render('home/knowledge.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
