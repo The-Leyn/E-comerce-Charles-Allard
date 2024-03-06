@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+<pre>
+    {{ dump(products[0].productImages[0].name) }}
+</pre>
+
+{% for product in products %}
+        <h2>{{ product.name }}</h2>
+        {% for productImage in product.productImages %}
+            <img src="{{ vich_uploader_asset(productImage, 'imageFile') }}" alt="{{ productImage.name }}">
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
