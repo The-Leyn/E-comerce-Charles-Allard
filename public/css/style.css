@@ -112,6 +112,7 @@ nav a, .container-base-nav-links button  {
   nav {
     padding: 20px 40px;
   }
+  
   .burger-btn, .container-nav-links a svg {
     display: block;
   }
@@ -162,6 +163,9 @@ nav a, .container-base-nav-links button  {
   .container-base-nav-links, .container-watches-nav-links {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .container-base-nav-links a:first-of-type {
+    display: none;
   }
 }
 @media(max-width: 770px) {

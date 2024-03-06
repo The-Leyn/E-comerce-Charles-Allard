@@ -34,10 +34,17 @@ class Product
     #[ORM\OneToMany(targetEntity: ProductImage::class, cascade:['persist'], mappedBy: 'product', orphanRemoval: true)]
     private Collection $productImages;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $information = null;
+
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products')]
+    private Collection $category;
+
     public function __construct()
     {
         $this->productImages = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,5 +140,45 @@ class Product
         }
 
         return $this;
+    }
+
+    public function getInformation(): ?array
+    {
+        return $this->information;
+    }
+
+    public function setInformation(?array $information): static
+    {
+        $this->information = $information;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->name;
     }
 }
