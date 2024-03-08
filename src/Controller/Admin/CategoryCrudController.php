@@ -22,6 +22,8 @@ class CategoryCrudController extends AbstractCrudController
             // IdField::new('id'),
             TextField::new('name'),
             AssociationField::new('products')->autocomplete(),
+            AssociationField::new('discounts')->autocomplete(),
+
         ];
     }
     

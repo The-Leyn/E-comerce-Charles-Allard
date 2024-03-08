@@ -6,7 +6,7 @@
 {% block body %}
 
 	<pre>
-        {{ dump(products[0].productImages[0].name) }}
+        {{ dump(products[0].category[0].discounts[0].percentageDiscount) }}
     </pre>
 
 	{% for product in products %}

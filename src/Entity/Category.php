@@ -21,9 +21,13 @@ class Category
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'category')]
     private Collection $products;
 
+    #[ORM\ManyToMany(targetEntity: Discount::class, mappedBy: 'category')]
+    private Collection $discounts;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->discounts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,6 +69,33 @@ class Category
     {
         if ($this->products->removeElement($product)) {
             $product->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Discount>
+     */
+    public function getDiscounts(): Collection
+    {
+        return $this->discounts;
+    }
+
+    public function addDiscount(Discount $discount): static
+    {
+        if (!$this->discounts->contains($discount)) {
+            $this->discounts->add($discount);
+            $discount->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiscount(Discount $discount): static
+    {
+        if ($this->discounts->removeElement($discount)) {
+            $discount->removeCategory($this);
         }
 
         return $this;

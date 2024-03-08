@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Discount;
 use App\Entity\Product;
 use App\Entity\ProductImage;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +41,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Product Admin');
+            ->setTitle('Admin Dashboard');
     }
 
     public function configureMenuItems(): iterable
@@ -50,5 +51,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Products', 'fas fa-list', Product::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', ProductImage::class);
         yield MenuItem::linkToCrud('Category', 'fas fa-table', Category::class);
+        yield MenuItem::linkToCrud('Discount', 'fas fa-tag', Discount::class);
     }
 }
