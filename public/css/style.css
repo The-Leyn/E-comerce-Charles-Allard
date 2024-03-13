@@ -12,7 +12,9 @@
   /* COLORS */
   --primary-color: #fff;
   --secondary-color: #000;
-  --test-background: purple;
+  --tertiary-color: #8c7157;
+  --product-background: #f4f4f4;
+  --product-subtitle: #767676;
 
   /* FONTS */
   --ubuntu-font: "Ubuntu", sans-serif;

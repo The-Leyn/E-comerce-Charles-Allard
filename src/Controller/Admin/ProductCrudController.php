@@ -30,7 +30,11 @@ class ProductCrudController extends AbstractCrudController
             CollectionField::new('productImages')
             ->setEntryType(ProductImageType::class),
             TextField::new('description'),
-            MoneyField::new('unitPrice')->setCurrency('EUR'),
+            // MoneyField::new('unitPrice')->setCurrency('EUR'),
+            MoneyField::new('unitPrice')->setCustomOption('storedAsCents', false)->setNumDecimals(0)->setCurrency('EUR'),
+            // MoneyField::new('unitPrice')->setCurrency('EUR')->setFormTypeOptions([
+            //     'divisor' => 100
+            // ]),
             IntegerField::new('stock'),
             CollectionField::new('information')
             ->setEntryType(ProductInformationType::class)

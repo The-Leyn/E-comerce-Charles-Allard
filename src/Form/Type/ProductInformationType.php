@@ -4,6 +4,8 @@ namespace App\Form\Type;
 
 
 use App\Entity\ProductImage;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,10 +17,10 @@ class ProductInformationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Key', TextType::class, [
+            ->add('key', TextType::class, [
                 'required' => true,
             ])
-            ->add('Value', TextType::class, [
+            ->add('value', TextType::class, [
                 'required' => true,
             ]);
         
