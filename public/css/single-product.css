@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 /* FULL SCREEN CAROUSEL */
 .full-screen-carousel {
   position: fixed;
@@ -9,13 +6,11 @@ body {
   width: 100%;
   min-height: 100vh;
   background: var(--primary-color);
-  /* opacity: 0;
-  transition: opacity .3s ease-out; */
   z-index: 999;
   display: flex;
   flex-direction: column;
 }
-.full-screen-carousel button {
+.full-screen-carousel > button {
   position: absolute;
   top: 0;
   right: 0;
@@ -30,7 +25,6 @@ body {
   z-index: 9;
 }
 .full-screen-carousel-container-image {
-  /* padding: 0 100px; */
   background: var(--product-background);
   width: 100%;
   height: calc(100% - 80px);
@@ -38,19 +32,47 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow: hidden; */
 }
 .full-screen-carousel-container-image img {
-  
   width: auto;
   min-width: 300px;
   max-width: 1200px;
   min-height: auto;
   max-height: 700px;
-
-  
-  transform: translateY(-50px); 
 }
+.full-screen-carousel-container-image button {
+  height: 100%;
+  width: 10%;
+  min-width: 60px;
+  position: fixed;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+}
+.full-screen-carousel-container-image button:first-of-type {
+  left: 0;
+}
+.full-screen-carousel-container-image button:last-of-type {
+  right: 0;
+}
+.full-screen-carousel-container-image button span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.full-screen-carousel-container-image button:first-of-type span {
+  margin-right: auto;
+}
+.full-screen-carousel-container-image button:last-of-type span {
+  margin-left: auto;
+}
+
 .full-screen-carousel-info {
   position: fixed;
   bottom: 0;
@@ -73,13 +95,11 @@ body {
   align-items: center;
   overflow: hidden;
 }
-.full-screen-carousel-info .carousel-progress-area::after {
-  content: "";
-  display: inline-block;
+.full-screen-carousel-info .carousel-progress-area .carousel-progress-line {
   width: 100%;
   height: 100%;
   background: var(--secondary-color);
-  transform: translateX(-60%);
+  transition: transform 0.3s ease-out;
 }
 /* ENDFULL SCREEN CAROUSEL */
 section {
@@ -139,10 +159,10 @@ section {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
 }
 .product-image img {
   max-width: 100%;
-
 }
 /* END PRODUCT IMAGE */
 
@@ -151,9 +171,6 @@ section {
   padding: 60px 0;
   width: 100%;
   max-width: 655px;
-  /* height: 100%; */
-  /* height: 500px; */
-  /* background: lightskyblue; */
 }
 .product-information h1 {
   font-size: var(--fz-30);
@@ -261,7 +278,6 @@ section {
 }
 .product-information a:hover {
   background: #111;
-  
 }
 /* END PRODUCT INFORMATION */
 
@@ -288,6 +304,11 @@ section {
   .product-information p {
     font-size: var(--fz-18);
   }
+  .full-screen-carousel-info {
+    padding: 0 40px;
+    height: 60px;
+    min-height: 60px;
+  }
 }
 @media (max-width: 1000px) {
   section {
@@ -310,7 +331,6 @@ section {
     min-width: 500px;
     max-width: 920px;
     max-height: 750px;
-    /* object-fit: cover; */
   }
   .product-information {
     order: 3;
@@ -318,7 +338,6 @@ section {
   .carousel-product button {
     width: fit-content;
     height: 2px;
-    /* padding: 20px; */
     background: transparent;
     margin: 0;
     padding: 20px 10px;
@@ -339,18 +358,20 @@ section {
     font-size: var(--fz-20);
   }
 }
-@media(max-width: 770px) {
+@media (max-width: 770px) {
   section {
     padding: 100px 20px;
+  }
+  .full-screen-carousel-info {
+    padding: 0 20px;
   }
   .product-image img {
     min-width: 320px;
     max-width: 740px;
     max-height: 750px;
-    /* object-fit: cover; */
   }
 }
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   section {
     gap: 20px;
   }
@@ -364,16 +385,13 @@ section {
     font-size: var(--fz-18);
   }
 }
-@media(max-width: 450px) {
+@media (max-width: 450px) {
   section {
     padding: 100px 20px 60px 20px;
-
   }
   .product-image img {
     min-width: 320px;
     max-width: 740px;
     max-height: 750px;
-    /* object-fit: cover; */
   }
 }
-
