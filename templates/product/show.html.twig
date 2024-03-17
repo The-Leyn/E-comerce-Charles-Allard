@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Montre -
-	{{product.name}}
+{% block title %}
+Montre - {{ product.name }}
 {% endblock %}
 {% block stylesheets %}
 	<link href="{{ asset('css/single-product.css') }}" rel="stylesheet"/>
@@ -186,7 +186,7 @@
 				<span>TVA Incluse</span>
 			</div>
 
-			<a href="#">Ajouter au Panier<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<a href="{{ path('app_cart_add', {id: product.id}) }}">Ajouter au Panier<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M10.6496 1.55566H9.34961L9.34961 19.5557H10.6496L10.6496 1.55566Z" fill="white"/>
 					<path d="M1 9.90557L1 11.2056L19 11.2056V9.90557L1 9.90557Z" fill="white"/>
 				</svg>

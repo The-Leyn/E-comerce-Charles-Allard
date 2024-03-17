@@ -9,7 +9,7 @@ window.addEventListener("scroll", () => {
 
   if (
     currentPositionScroll > lastScrollPosition &&
-    currentPositionScroll > 150 &&
+    currentPositionScroll > 50 &&
     !containerNavLinks.classList.contains("open-links")
   ) {
     // Si on scroll vers le bas fais remonter la navBar
@@ -20,7 +20,7 @@ window.addEventListener("scroll", () => {
   }
   lastScrollPosition = currentPositionScroll;
 
-  if (currentPositionScroll > 150) {
+  if (currentPositionScroll > 50) {
     navBar.style.backgroundColor = "#fff";
   } else {
     navBar.style.backgroundColor = "transparent";

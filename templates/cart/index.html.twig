@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+{% block stylesheets %}
+	<link href="{{ asset('css/cart.css') }}" rel="stylesheet"/>
+{% endblock %}
+{# {% block javascripts %}
+	<script src="{{ asset('js/single-product.js') }}" defer></script>
+{% endblock %} #}
+{% block body %}
+	{# {{ dump(data) }} #}
+	<section>
+		<div class="cart-part">
+			<h1>Votre Panier</h1>
+			{% set orderTotal = 0 %}
+			{% for item in data %}
+				{# {{ dump(item) }} #}
+				<div class="cart-product">
+					<div class="cart-product-image">
+						<img src="{{ vich_uploader_asset(item.product.productImages[0], 'imageFile') }}" alt="{{ item.product.productImages[0].name }}">
+					</div>
+					<div class="cart-product-information">
+						<h2>{{ item.product.name |capitalize}}
+							{% for information in item.product.information %}
+								{% if information.key == "mouvement" %}
+									<span>
+										{{ information.value |capitalize }}
+									</span>
+								{% endif %}
+							{% endfor %}
+						</h2>
+						<h3>
+							{% for information in item.product.information %}
+								{% if information.key == "watchNumber" or information.key == "materiaux" %}
+									{{ information.value }}
+								{% endif %}
+							{% endfor %}
+						</h3>
+						{% set highestPriorityDiscount = null %}
+						{% set highestPriority = -1 %}
+						{% set currentDate = "now"|date('Y-m-d H:i:s') %}
+						{% for category in item.product.category %}
+							{% for discount in category.discounts %}
+								{% if discount.active == true and (discount.startDate is null or discount.startDate|date('Y-m-d H:i:s') <= currentDate) %}
+									{% if discount.endDate is null or discount.endDate|date('Y-m-d H:i:s') >= currentDate %}
+										{% if discount.priority > highestPriority %}
+											{% set highestPriorityDiscount = discount %}
+											{% set highestPriority = discount.priority %}
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
+						<div class="cart-product-price-container">
+							{% if highestPriorityDiscount is not null %}
+								{% set discountedPrice = item.product.unitPrice %}
+								{% if highestPriorityDiscount.percentageDiscount is not null %}
+									{% set discountedPrice = discountedPrice - (discountedPrice * (highestPriorityDiscount.percentageDiscount / 100)) %}
+								{% endif %}
+								{% if highestPriorityDiscount.amountDiscount is not null %}
+									{% set discountedPrice = discountedPrice - highestPriorityDiscount.amountDiscount %}
+								{% endif %}
+								{% set orderTotal = orderTotal + discountedPrice %}
+
+								<h3>
+									{{ discountedPrice|number_format(0, '.', ' ') }}
+									€
+									<span>
+										{{ item.product.unitPrice|number_format(0, '.', ' ') }}
+										€
+									</span>
+								</h3>
+							{% else %}
+								{% set orderTotal = orderTotal + item.product.unitPrice %}
+								<h3>
+									{{ item.product.unitPrice|number_format(0, '.', ' ') }}
+									€
+								</h3>
+							{% endif %}
+							{% if highestPriorityDiscount is not null %}
+								{% if highestPriorityDiscount.percentageDiscount is not null %}
+									<span>
+										-{{ highestPriorityDiscount.percentageDiscount }}%
+									</span>
+								{% endif %}
+								{% if highestPriorityDiscount.amountDiscount is not null %}
+									<span>
+										-{{ highestPriorityDiscount.amountDiscount }}€
+									</span>
+								{% endif %}
+							{% endif %}
+							<span>TVA Incluse</span>
+						</div>
+
+						{# {{ dump(item.product.id) }} #}
+
+						<a href="{{ path('app_cart_remove', {id: item.product.id}) }}">
+							<span>Supprimer</span>
+							<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g clip-path="url(#clip0_324_841)">
+									<path d="M18.8873 20.1748L19.8096 19.2524L1.11288 0.555756L0.190569 1.47807L18.8873 20.1748Z" fill="black"/>
+									<path d="M9.06108 10.1167L9.9834 11.0391L19.5421 1.48035L18.6198 0.558033L9.06108 10.1167Z" fill="black"/>
+									<path d="M0.000288245 19.2259L0.923828 20.147L8.75194 12.298L7.8284 11.3769L0.000288245 19.2259Z" fill="black"/>
+								</g>
+								<defs>
+									<clipPath id="clip0_324_841">
+										<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+					</div>
+				</div>
+			{% else %}
+				<p>Votre panier est actuelement vide.</p>
+				<a href="{{ path('app_product') }}">
+					Poursuivez vos achat
+					<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clip-path="url(#clip0_324_848)">
+							<path d="M9.83755 20.2318L17.626 12.4434L16.7037 11.521L8.91524 19.3095L9.83755 20.2318Z" fill="white"/>
+							<path d="M18.9078 11.4707L19.8301 10.5483L9.88947 0.607729L8.96715 1.53004L18.9078 11.4707Z" fill="white"/>
+						</g>
+						<defs>
+							<clipPath id="clip0_324_848">
+								<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+							</clipPath>
+						</defs>
+					</svg>
+				</a>
+			{% endfor %}
+		</div>
+		<div class="order-part">
+			<h2>Commander dès
+				<span>Maintenant</span>
+			</h2>
+			<div class="container-cart-total">
+				<h3>Total :
+					{{ orderTotal|number_format(0, '.', ' ') }}
+					€</h3>
+				<span>TVA Incluse</span>
+			</div>
+			{% if data %}
+				{# Si le panier ne contient pas de produit n'affiche pas le boutton de commande #}
+				<a href="#">
+					Paiement
+					<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clip-path="url(#clip0_324_848)">
+							<path d="M9.83755 20.2318L17.626 12.4434L16.7037 11.521L8.91524 19.3095L9.83755 20.2318Z" fill="white"/>
+							<path d="M18.9078 11.4707L19.8301 10.5483L9.88947 0.607729L8.96715 1.53004L18.9078 11.4707Z" fill="white"/>
+						</g>
+						<defs>
+							<clipPath id="clip0_324_848">
+								<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+							</clipPath>
+						</defs>
+					</svg>
+				</a>
+			{% endif %}
+			<div class="container-order-information">
+				<div class="order-information">
+					<h4>Livraison</h4>
+					<p>Livraison standard offerte sur toutes les commandes.</p>
+				</div>
+				<div class="order-information">
+					<h4>Retours et échanges</h4>
+					<p>L'article ne vous satisfait pas ? Vous pouvez le retourner dans un délai de 30 jours.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
