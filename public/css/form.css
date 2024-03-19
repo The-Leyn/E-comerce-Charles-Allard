@@ -1,0 +1,96 @@
+section {
+    padding: 100px 80px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+section h1 {
+    font-size: var(--fz-60);
+    font-family: var(--libre-bodoni-font);
+    margin-bottom: 40px;
+}
+section form p {
+    letter-spacing: 0.024em;
+    font-size: var(--fz-16);
+    font-weight: var(--fw-light);
+    margin-bottom: 40px;
+}
+section form a {
+    letter-spacing: 0.024em;
+    color: var(--secondary-color);
+    font-weight: var(--fw-regular);
+
+}
+section form button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 237px;
+    height: 56px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: var(--fz-16);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-medium);
+    border: none;
+    cursor: pointer;
+    margin-top: 40px;
+}
+section form button:hover {
+    background: #111;
+}
+.container-double-input {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+}
+.container-double-input div {
+    width: 100%;
+}
+.container-double-input div {
+    margin-bottom: 0;
+}
+.container-input, form  div:not(.container-double-input, div:nth-of-type(5)) {
+    border: 1px solid var(--secondary-color);
+    padding: 20px 20px 5px 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.container-input input, form div input {
+    font-size: var(--fz-16);
+    border: none;
+    color: var(--secondary-color);
+    padding: 10px 0;
+    margin-top: 5px;
+}
+form div:nth-of-type(5)  {
+    display: flex;
+    align-items: center;
+}
+form div:nth-of-type(5) input {
+    margin: 0 0 0 10px;
+}
+form div:nth-of-type(5) label {
+    font-weight: var(--fw-light);
+}
+
+@media (max-width: 1200px) {
+    section {
+        padding: 100px 40px;
+        /* width: 100%; */
+    }
+}
+@media (max-width: 770px) {
+    section {
+        padding: 100px 20px;
+    }
+    section h1 {
+        font-size: var(--fz-40);
+    }
+    .container-double-input {
+        flex-direction: column;
+        gap: 0;
+    }
+}

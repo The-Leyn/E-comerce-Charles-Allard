@@ -3,7 +3,7 @@ console.log("Hello World !!!");
 // FOOTER ELEMENT ACCORDION
 
 const footerElements = document.querySelectorAll(".footer-element");
-
+console.log(footerElements);
 footerElements.forEach((element) => {
   const footerElementBtn = element.querySelector("button");
 
@@ -13,9 +13,10 @@ footerElements.forEach((element) => {
   console.log(allLinksElement.length);
 
   footerElementBtn.addEventListener("click", () => {
-    if (screen.width < 1000 && screen.width > 850) {
+    console.log('in');
+    if (window.innerWidth < 1000 && window.innerWidth > 850) {
       expandFooterElement(44);
-    } else if (screen.width < 850) {
+    } else if (window.innerWidth < 850) {
       expandFooterElement(39);
     }
   });

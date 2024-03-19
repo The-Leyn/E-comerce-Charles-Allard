@@ -2,9 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Slider;
+use App\Entity\Product;
 use App\Entity\Category;
 use App\Entity\Discount;
-use App\Entity\Product;
 use App\Entity\ProductImage;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,5 +53,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Images', 'fas fa-image', ProductImage::class);
         yield MenuItem::linkToCrud('Category', 'fas fa-table', Category::class);
         yield MenuItem::linkToCrud('Discount', 'fas fa-tag', Discount::class);
+        yield MenuItem::linkToCrud('Slider', 'fas fa-tag', Slider::class);
     }
 }

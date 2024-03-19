@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
-
+{% block title %}Register
+{% endblock %}
+{% block stylesheets %}
+	<link href="{{ asset('css/form.css') }}" rel="stylesheet"/>
+{% endblock %}
+{# {% block javascripts %}
+	<script src="{{ asset('js/single-product.js') }}" defer></script>
+{% endblock %} #}
 {% block body %}
-    <h1 style="margin-top: 200px">Register</h1>
+	<section>
+		<h1>S'inscrire</h1>
 
-    {{ form_errors(registrationForm) }}
+		{{ form_errors(registrationForm) }}
 
-    {# {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+		{{ form_start(registrationForm) }}
+		<div class="container-double-input">
+			{{ form_row(registrationForm.firstname) }}
+			{{ form_row(registrationForm.lastname) }}
+		</div>
+		{{ form_row(registrationForm.email) }}
+		<div class="container-double-input">
+			{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+		</div>
+		{{ form_row(registrationForm.phoneNumber) }}
+		{{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }} #}
-    {{form(registrationForm)}}
+		<button type="submit" class="btn">S'inscrire
+			<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_324_848)">
+					<path d="M9.83755 20.2318L17.626 12.4434L16.7037 11.521L8.91524 19.3095L9.83755 20.2318Z" fill="white"/>
+					<path d="M18.9078 11.4707L19.8301 10.5483L9.88947 0.607729L8.96715 1.53004L18.9078 11.4707Z" fill="white"/>
+				</g>
+				<defs>
+					<clipPath id="clip0_324_848">
+						<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+					</clipPath>
+				</defs>
+			</svg>
+		</button>
+		{{ form_end(registrationForm) }}
+		{# {{form(registrationForm)}} #}
+	</section>
 {% endblock %}

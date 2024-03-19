@@ -145,6 +145,7 @@ section {
 .carousel-product button img {
   width: 100%;
   height: fit-content;
+  max-height: 156px;
   object-fit: cover;
 }
 /* END CAROUSEL PRODUCT */

@@ -1,31 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
-
+{% block title %}Log in!
+{% endblock %}
+{% block stylesheets %}
+	<link href="{{ asset('css/form.css') }}" rel="stylesheet"/>
+{% endblock %}
+{# {% block javascripts %}
+	<script src="{{ asset('js/single-product.js') }}" defer></script>
+{% endblock %} #}
 {% block body %}
-<form method="post" style="margin-top: 200px">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+	<section>
+		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+			{% if app.user %}
+				<div class="mb-3">
+					Connecter en tant que
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}">Se déconnecter</a>
+				</div>
+			{% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			<h1>Se connecter</h1>
+			<p>Vous n'avez pas encore de compte ?
+				<a href="{{ path('app_register') }}">Inscrivez-vous</a>
+			</p>
+			<div class="container-input">
+				<label for="inputEmail">E-mail</label>
+				<input type="email" value="{{ last_username }}" name="email" placeholder="Entrer votre adresse e-mail" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+			</div>
+			<div class="container-input">
+				<label for="inputPassword">Mot de passe</label>
+				<input type="password" name="password" placeholder="Entrer votre mot de passe" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			</div>
+			<a href="#">Mot de passe oublié ?</a>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+			<button type="submit">Se connecter
+				<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0_324_848)">
+						<path d="M9.83755 20.2318L17.626 12.4434L16.7037 11.521L8.91524 19.3095L9.83755 20.2318Z" fill="white"/>
+						<path d="M18.9078 11.4707L19.8301 10.5483L9.88947 0.607729L8.96715 1.53004L18.9078 11.4707Z" fill="white"/>
+					</g>
+					<defs>
+						<clipPath id="clip0_324_848">
+							<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+						</clipPath>
+					</defs>
+				</svg>
+			</button>
+		</form>
+	</section>
 {% endblock %}

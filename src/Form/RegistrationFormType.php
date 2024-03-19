@@ -9,6 +9,8 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -19,9 +21,24 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('email')
+            ->add('firstname', TextType::class,[
+                'label' => 'Prénom*',
+                'attr' => [
+                    'placeholder' => 'Entrer votre prénom',
+                ],
+            ])
+            ->add('lastname', TextType::class,[
+                'label' => 'Nom*',
+                'attr' => [
+                    'placeholder' => 'Entrer votre nom',
+                ],
+            ])
+            ->add('email', EmailType::class,[
+                'label' => 'E-mail*',
+                'attr' => [
+                    'placeholder' => 'Entrer votre adresse email',
+                ],
+            ])
             // ->add('plainPassword', PasswordType::class, [
             //     // instead of being set onto the object directly,
             //     // this is read and encoded in the controller
@@ -42,7 +59,9 @@ class RegistrationFormType extends AbstractType
 
             ->add('plainPassword', RepeatedType::class, [
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -58,25 +77,35 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Mot de passe*', 'attr' => ['placeholder' => 'Entrer votre mot de passe']],
+                'second_options' => ['label' => 'Confirmer le mot de passe*', 'attr' => ['placeholder' => 'Entrer votre mot de passe']],
             ])
 
 
 
 
-            ->add('phoneNumber')
+            ->add('phoneNumber', TextType::class,[
+                'required' => false,
+                'label' => 'Numéro de téléphone',
+                'attr' => [
+                    'placeholder' => 'Entrer votre numéro de téléphone',
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => "J'accepte que Charles Allard utilise mes informations personnelles",
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les conditions général',
                     ]),
                 ],
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => "S'inscrire"
+                // 'attr' => [
+                //     'class' => 'agree-term',
+                // ],
             ]);
+        // ->add('save', SubmitType::class, [
+        //     'label' => "S'inscrire"
+        // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
