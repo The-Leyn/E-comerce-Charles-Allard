@@ -27,10 +27,7 @@ if (accordionElementBtn) { // Vérifie si le produit contient un accordéon
 
 const allCarouselBtn = document.querySelectorAll('.carousel-product button')
 
-console.log(allCarouselBtn);
-
 const imageProduct = document.querySelector('.product-image img')
-console.log(imageProduct);
 
 let imagesPathTable = []
 
@@ -38,8 +35,6 @@ allCarouselBtn.forEach(carouselBtn => {
     const carouselImagePath = carouselBtn.querySelector('img').src
     imagesPathTable.push(carouselImagePath)
     const carouselImageIndex = carouselBtn.querySelector('img').getAttribute('index');
-    console.log(carouselImageIndex);
-    console.log(carouselImageIndex);
 
     carouselBtn.addEventListener('click', () => {
         imageProduct.src = carouselImagePath

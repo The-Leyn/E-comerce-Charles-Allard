@@ -5,28 +5,147 @@
 {% block stylesheets %}
 	<link href="{{ asset('css/index.css') }}" rel="stylesheet"/>
 {% endblock %}
-{# {% block javascripts %}
-	<script src="{{ asset('js/single-product.js') }}" defer></script>
-{% endblock %} #}
+{% block javascripts %}
+	<script src="{{ asset('js/index.js') }}" defer></script>
+{% endblock %} 
 {% block body %}
 
-	<section>
-		<div class="slider-product-information">
-			<div class="slider-product-title">
-				<h1>L'itemporel</h1>
-				<h2>Automatique</h2>
+	<section id="slider">
+		{% for slider in sliders %}
+			<div class="slider-slide {% if loop.first %}active-slider{% endif %}">
+				<div class="slider-product-information">
+					<div class="slider-product-title">
+						<h1>{{ slider.product.name }}</h1>
+						{% for information in slider.product.information %}
+							{% if information.key == "mouvement" %}
+								<h2>
+									{{ information.value |capitalize }}
+								</h2>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<p>{{ slider.product.description }}</p>
+					<a href="{{ path('app_product_show', {id: slider.product.id}) }}">En savoir plus</a>
+				</div>
+				{# <div class="slider-product-image">
+																																					<img src="{{ vich_uploader_asset(slider.product.productImages[0], 'imageFile') }}" alt="{{ slider.product.productImages[0].name }}">
+																																				</div> #}
 			</div>
-            <p>Nous sommes fiers de vous présenter la toute nouvelle version de notre montre emblématique : "L’intemporel".  Symbole d'élégance et de sophistication, cette montre incarne l'essence même du style classique revisité pour le monde moderne.</p>
-            <a href="#">En savoir plus</a>
-		</div>
+		{% endfor %}
 		<div class="slider-product-image">
-			<img src="{{ vich_uploader_asset(sliders[0].product.productImages[0], 'imageFile') }}" alt="{{ sliders[0].product.productImages[0].name }}">
+			{% for slider in sliders %}
+				<img class="{% if loop.first %}active-slider-image{% endif %}" src="{{ vich_uploader_asset(slider.product.productImages[0], 'imageFile') }}" alt="{{ slider.product.productImages[0].name }}">
+
+			{% endfor %}
+			<svg width="1440" height="1440" viewbox="0 0 1440 1440" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M730.514 351.827H709.486L694.445 187L720 208.005L745.554 187L730.514 351.827Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M352.011 708.902V729.907L187 744.931L208.028 719.405L187 693.878L352.011 708.902Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1087.99 729.907V708.902L1253 693.878L1231.97 719.405L1253 744.931L1087.99 729.907Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M461.073 253.988L444.633 263.47L527.139 406.209L543.579 396.728L461.073 253.988Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M396.962 895.609L254.063 978.017L263.555 994.439L406.454 912.031L396.962 895.609Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M528.383 1033.34L445.877 1176.08L462.317 1185.56L544.823 1042.81L528.383 1033.34Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M912.835 1032.58L896.395 1042.06L978.901 1184.8L995.34 1175.32L912.835 1032.58Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1043.75 894.39L1034.25 910.812L1177.15 993.22L1186.65 976.798L1043.75 894.39Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1176.42 444.346L1033.52 526.76L1043.01 543.18L1185.91 460.767L1176.42 444.346Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M977.656 253.28L895.15 396.021L911.59 405.502L994.096 262.761L977.656 253.28Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M669.036 243.596C673.874 243.596 677.797 239.677 677.797 234.844C677.797 230.01 673.874 226.092 669.036 226.092C664.197 226.092 660.274 230.01 660.274 234.844C660.274 239.677 664.197 243.596 669.036 243.596Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M618.656 251.617C623.495 251.617 627.418 247.699 627.418 242.866C627.418 238.032 623.495 234.113 618.656 234.113C613.817 234.113 609.895 238.032 609.895 242.866C609.895 247.699 613.817 251.617 618.656 251.617Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M569.3 264.746C574.139 264.746 578.061 260.828 578.061 255.994C578.061 251.16 574.139 247.243 569.3 247.243C564.461 247.243 560.538 251.16 560.538 255.994C560.538 260.828 564.461 264.746 569.3 264.746Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M521.548 283.126C526.387 283.126 530.309 279.208 530.309 274.374C530.309 269.541 526.387 265.622 521.548 265.622C516.709 265.622 512.786 269.541 512.786 274.374C512.786 279.208 516.709 283.126 521.548 283.126Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M433.349 334.032C438.187 334.032 442.11 330.113 442.11 325.28C442.11 320.447 438.187 316.528 433.349 316.528C428.51 316.528 424.587 320.447 424.587 325.28C424.587 330.113 428.51 334.032 433.349 334.032Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M357.56 402.15C362.399 402.15 366.322 398.232 366.322 393.399C366.322 388.565 362.399 384.646 357.56 384.646C352.721 384.646 348.798 388.565 348.798 393.399C348.798 398.232 352.721 402.15 357.56 402.15Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M274.471 529.926C279.31 529.926 283.233 526.009 283.233 521.175C283.233 516.341 279.31 512.423 274.471 512.423C269.632 512.423 265.709 516.341 265.709 521.175C265.709 526.009 269.632 529.926 274.471 529.926Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M256.071 577.625C260.91 577.625 264.833 573.707 264.833 568.874C264.833 564.04 260.91 560.122 256.071 560.122C251.232 560.122 247.31 564.04 247.31 568.874C247.31 573.707 251.232 577.625 256.071 577.625Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M242.928 626.927C247.767 626.927 251.69 623.008 251.69 618.175C251.69 613.341 247.767 609.423 242.928 609.423C238.089 609.423 234.167 613.341 234.167 618.175C234.167 623.008 238.089 626.927 242.928 626.927Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M234.897 677.251C239.736 677.251 243.659 673.332 243.659 668.498C243.659 663.665 239.736 659.746 234.897 659.746C230.058 659.746 226.135 663.665 226.135 668.498C226.135 673.332 230.058 677.251 234.897 677.251Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M234.897 779.065C239.736 779.065 243.659 775.147 243.659 770.314C243.659 765.48 239.736 761.562 234.897 761.562C230.058 761.562 226.135 765.48 226.135 770.314C226.135 775.147 230.058 779.065 234.897 779.065Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M242.928 829.388C247.767 829.388 251.69 825.47 251.69 820.637C251.69 815.803 247.767 811.884 242.928 811.884C238.089 811.884 234.167 815.803 234.167 820.637C234.167 825.47 238.089 829.388 242.928 829.388Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M256.071 878.688C260.91 878.688 264.833 874.772 264.833 869.938C264.833 865.103 260.91 861.187 256.071 861.187C251.232 861.187 247.31 865.103 247.31 869.938C247.31 874.772 251.232 878.688 256.071 878.688Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M274.471 926.385C279.31 926.385 283.233 922.469 283.233 917.634C283.233 912.8 279.31 908.884 274.471 908.884C269.632 908.884 265.709 912.8 265.709 917.634C265.709 922.469 269.632 926.385 274.471 926.385Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M325.434 1014.49C330.273 1014.49 334.196 1010.57 334.196 1005.74C334.196 1000.9 330.273 996.986 325.434 996.986C320.595 996.986 316.672 1000.9 316.672 1005.74C316.672 1010.57 320.595 1014.49 325.434 1014.49Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M357.56 1054.16C362.399 1054.16 366.322 1050.25 366.322 1045.41C366.322 1040.58 362.399 1036.66 357.56 1036.66C352.721 1036.66 348.798 1040.58 348.798 1045.41C348.798 1050.25 352.721 1054.16 357.56 1054.16Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1046.37 1090.19C1051.21 1090.19 1055.13 1086.28 1055.13 1081.44C1055.13 1076.61 1051.21 1072.69 1046.37 1072.69C1041.53 1072.69 1037.61 1076.61 1037.61 1081.44C1037.61 1086.28 1041.53 1090.19 1046.37 1090.19Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1082.44 1054.16C1087.28 1054.16 1091.2 1050.25 1091.2 1045.41C1091.2 1040.58 1087.28 1036.66 1082.44 1036.66C1077.6 1036.66 1073.68 1040.58 1073.68 1045.41C1073.68 1050.25 1077.6 1054.16 1082.44 1054.16Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1114.57 1014.49C1119.4 1014.49 1123.33 1010.57 1123.33 1005.74C1123.33 1000.9 1119.4 996.986 1114.57 996.986C1109.73 996.986 1105.8 1000.9 1105.8 1005.74C1105.8 1010.57 1109.73 1014.49 1114.57 1014.49Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1165.53 926.385C1170.37 926.385 1174.29 922.469 1174.29 917.634C1174.29 912.8 1170.37 908.884 1165.53 908.884C1160.69 908.884 1156.77 912.8 1156.77 917.634C1156.77 922.469 1160.69 926.385 1165.53 926.385Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1183.93 878.688C1188.77 878.688 1192.69 874.772 1192.69 869.938C1192.69 865.103 1188.77 861.187 1183.93 861.187C1179.09 861.187 1175.17 865.103 1175.17 869.938C1175.17 874.772 1179.09 878.688 1183.93 878.688Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1197.07 829.388C1201.91 829.388 1205.83 825.47 1205.83 820.637C1205.83 815.803 1201.91 811.884 1197.07 811.884C1192.23 811.884 1188.31 815.803 1188.31 820.637C1188.31 825.47 1192.23 829.388 1197.07 829.388Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1205.1 779.065C1209.94 779.065 1213.86 775.147 1213.86 770.314C1213.86 765.48 1209.94 761.562 1205.1 761.562C1200.26 761.562 1196.34 765.48 1196.34 770.314C1196.34 775.147 1200.26 779.065 1205.1 779.065Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1205.1 677.251C1209.94 677.251 1213.86 673.332 1213.86 668.498C1213.86 663.665 1209.94 659.746 1205.1 659.746C1200.26 659.746 1196.34 663.665 1196.34 668.498C1196.34 673.332 1200.26 677.251 1205.1 677.251Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1197.07 626.927C1201.91 626.927 1205.83 623.008 1205.83 618.175C1205.83 613.341 1201.91 609.423 1197.07 609.423C1192.23 609.423 1188.31 613.341 1188.31 618.175C1188.31 623.008 1192.23 626.927 1197.07 626.927Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1183.93 577.625C1188.77 577.625 1192.69 573.707 1192.69 568.874C1192.69 564.04 1188.77 560.122 1183.93 560.122C1179.09 560.122 1175.17 564.04 1175.17 568.874C1175.17 573.707 1179.09 577.625 1183.93 577.625Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1165.53 529.926C1170.37 529.926 1174.29 526.009 1174.29 521.175C1174.29 516.341 1170.37 512.423 1165.53 512.423C1160.69 512.423 1156.77 516.341 1156.77 521.175C1156.77 526.009 1160.69 529.926 1165.53 529.926Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1114.57 441.826C1119.4 441.826 1123.33 437.907 1123.33 433.074C1123.33 428.241 1119.4 424.322 1114.57 424.322C1109.73 424.322 1105.8 428.241 1105.8 433.074C1105.8 437.907 1109.73 441.826 1114.57 441.826Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1082.44 402.15C1087.28 402.15 1091.2 398.232 1091.2 393.399C1091.2 388.565 1087.28 384.646 1082.44 384.646C1077.6 384.646 1073.68 388.565 1073.68 393.399C1073.68 398.232 1077.6 402.15 1082.44 402.15Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1046.37 366.121C1051.21 366.121 1055.13 362.202 1055.13 357.369C1055.13 352.536 1051.21 348.618 1046.37 348.618C1041.53 348.618 1037.61 352.536 1037.61 357.369C1037.61 362.202 1041.53 366.121 1046.37 366.121Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1006.65 334.032C1011.49 334.032 1015.41 330.113 1015.41 325.28C1015.41 320.447 1011.49 316.528 1006.65 316.528C1001.81 316.528 997.89 320.447 997.89 325.28C997.89 330.113 1001.81 334.032 1006.65 334.032Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M918.451 283.126C923.29 283.126 927.213 279.208 927.213 274.374C927.213 269.541 923.29 265.622 918.451 265.622C913.612 265.622 909.689 269.541 909.689 274.374C909.689 279.208 913.612 283.126 918.451 283.126Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M870.701 264.746C875.54 264.746 879.462 260.828 879.462 255.994C879.462 251.16 875.54 247.243 870.701 247.243C865.862 247.243 861.939 251.16 861.939 255.994C861.939 260.828 865.862 264.746 870.701 264.746Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M821.344 251.617C826.183 251.617 830.105 247.699 830.105 242.866C830.105 238.032 826.183 234.113 821.344 234.113C816.505 234.113 812.582 238.032 812.582 242.866C812.582 247.699 816.505 251.617 821.344 251.617Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M770.964 243.596C775.803 243.596 779.726 239.677 779.726 234.844C779.726 230.01 775.803 226.092 770.964 226.092C766.125 226.092 762.203 230.01 762.203 234.844C762.203 239.677 766.125 243.596 770.964 243.596Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M709.486 1088.17H730.514L745.555 1253L720 1232L694.446 1253L709.486 1088.17Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M396.25 545.61L405.75 529.188L262.85 446.78L253.35 463.202L396.25 545.61Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M770.964 1196.4C766.126 1196.4 762.203 1200.32 762.203 1205.16C762.203 1209.99 766.126 1213.91 770.964 1213.91C775.803 1213.91 779.726 1209.99 779.726 1205.16C779.726 1200.32 775.803 1196.4 770.964 1196.4Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M821.344 1188.38C816.505 1188.38 812.582 1192.3 812.582 1197.13C812.582 1201.97 816.505 1205.89 821.344 1205.89C826.183 1205.89 830.105 1201.97 830.105 1197.13C830.105 1192.3 826.183 1188.38 821.344 1188.38Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M870.7 1175.25C865.861 1175.25 861.939 1179.17 861.939 1184.01C861.939 1188.84 865.861 1192.76 870.7 1192.76C875.539 1192.76 879.462 1188.84 879.462 1184.01C879.462 1179.17 875.539 1175.25 870.7 1175.25Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M918.452 1156.87C913.613 1156.87 909.691 1160.79 909.691 1165.63C909.691 1170.46 913.613 1174.38 918.452 1174.38C923.291 1174.38 927.214 1170.46 927.214 1165.63C927.214 1160.79 923.291 1156.87 918.452 1156.87Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M1006.65 1105.97C1001.81 1105.97 997.89 1109.89 997.89 1114.72C997.89 1119.55 1001.81 1123.47 1006.65 1123.47C1011.49 1123.47 1015.41 1119.55 1015.41 1114.72C1015.41 1109.89 1011.49 1105.97 1006.65 1105.97Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M393.63 349.808C388.79 349.808 384.87 353.724 384.87 358.559C384.87 363.393 388.79 367.309 393.63 367.309C398.47 367.309 402.39 363.393 402.39 358.559C402.39 353.724 398.47 349.808 393.63 349.808Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M325.43 425.514C320.6 425.514 316.67 429.429 316.67 434.264C316.67 439.099 320.6 443.014 325.43 443.014C330.27 443.014 334.2 439.099 334.2 434.264C334.2 429.429 330.27 425.514 325.43 425.514Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M393.63 1073.88C388.79 1073.88 384.87 1077.8 384.87 1082.63C384.87 1087.46 388.79 1091.38 393.63 1091.38C398.47 1091.38 402.39 1087.46 402.39 1082.63C402.39 1077.8 398.47 1073.88 393.63 1073.88Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M433.35 1105.97C428.51 1105.97 424.59 1109.89 424.59 1114.72C424.59 1119.55 428.51 1123.47 433.35 1123.47C438.19 1123.47 442.11 1119.55 442.11 1114.72C442.11 1109.89 438.19 1105.97 433.35 1105.97Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M521.549 1156.87C516.71 1156.87 512.787 1160.79 512.787 1165.63C512.787 1170.46 516.71 1174.38 521.549 1174.38C526.388 1174.38 530.311 1170.46 530.311 1165.63C530.311 1160.79 526.388 1156.87 521.549 1156.87Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M569.299 1175.25C564.46 1175.25 560.538 1179.17 560.538 1184.01C560.538 1188.84 564.46 1192.76 569.299 1192.76C574.138 1192.76 578.061 1188.84 578.061 1184.01C578.061 1179.17 574.138 1175.25 569.299 1175.25Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M618.656 1188.38C613.817 1188.38 609.895 1192.3 609.895 1197.13C609.895 1201.97 613.817 1205.89 618.656 1205.89C623.495 1205.89 627.418 1201.97 627.418 1197.13C627.418 1192.3 623.495 1188.38 618.656 1188.38Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M669.036 1196.4C664.197 1196.4 660.274 1200.32 660.274 1205.16C660.274 1209.99 664.197 1213.91 669.036 1213.91C673.875 1213.91 677.797 1209.99 677.797 1205.16C677.797 1200.32 673.875 1196.4 669.036 1196.4Z" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path id="hours-hand" d="M736 719L729.683 442H709.317L703 719" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path id="minutes-hand" d="M736 719L729.683 302H709.317L703 719" stroke="white" stroke-opacity="1" stroke-width="2.5"/>
+				<path d="M719.519 736.04C729.195 736.04 737.04 728.197 737.04 718.521C737.04 708.845 729.195 701 719.519 701C709.843 701 702 708.845 702 718.521C702 728.197 709.843 736.04 719.519 736.04Z" fill="white" stroke="white" stroke-width="2.5"/>
+			</svg>
+		</div>
+    <div class="slider-indicators">
+      {% for slider in sliders %}
+        <button><div class="{% if loop.first %}active{% endif %}"><span></span></div></button>
+      {% endfor %}
+    </div>
+	</section>
+	<section id="collection">
+		<div class="introduction-collection">
+			<h2>Nos Dernières
+				<span>Collections</span>
+			</h2>
+			<div class="introduction-collection-description">
+				<p>Explorez nos sélections de montres de pointe, où chaque pièce incarne l'élégance et l'innovation.</p>
+				<p>Découvrez dès maintenant les dernières tendances horlogères et trouvez la montre parfaite pour sublimer votre style quotidien.</p>
+			</div>
+			<a href="#">Découvrez nos collections</a>
+		</div>
+		<div class="container-collection">
+			{% for i in 0..2 %}
+				<div class="collection">
+					<img src="{% if loop.first %}{{ asset('images/watch_cream_dial_front_972px.webp')}}{% elseif loop.index == 2 %}{{ asset('images/watch_sea_blue_dial_golden_case_front.webp')}}{% elseif loop.index == 3 %}{{ asset('images/watch_sea_blue_dial_golden_case_front.webp')}}{% endif %}" alt="{% if loop.first %}Montre héritage avec un cadran crème{% elseif loop.index == 2 %}Montre océanic en or avec un cadran bleu{% endif %}">
+					<div class="description-collection">
+						<h3>Collection {% if loop.first %}Héritage{% elseif loop.index == 2 %}Océanic{% elseif loop.index == 3 %}Prestige{% endif %}</h3>
+						<p>Explorez notre gamme de montres pour femmes, alliant style raffiné et audace contemporaine pour une touche d'élégance à chaque instant.</p>
+						<a href="#">En savoir plus</a>
+					</div>
+				</div>
+			{% endfor %}
 		</div>
 	</section>
-	<pre>
-	    {# {{ dump(app.user) }} #}
-	    {{ dump(sliders[0].product.productImages[0]) }}
-	</pre>
-
-	{# <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem temporibus aliquam harum, nam porro aspernatur, soluta sed labore nesciunt consequuntur dignissimos veritatis magni corporis excepturi nisi? Libero in repudiandae corrupti perspiciatis, doloremque id obcaecati itaque veritatis mollitia sed, natus soluta ad distinctio impedit ullam. Rem culpa soluta velit magni minima eius numquam sed quae officia exercitationem quo nisi, est doloribus veniam asperiores earum ipsa id illum, inventore similique a eum adipisci quas! Placeat, aliquam perspiciatis autem eligendi deserunt dolorem veritatis error, illo unde minus, consequatur itaque. Facilis aperiam explicabo nobis qui omnis maiores porro ad, libero ipsa esse temporibus eaque similique veritatis repudiandae sed placeat, illum dolores animi nulla dolore amet accusamus facere? Adipisci nostrum consectetur atque, sequi accusantium obcaecati eum maiores similique culpa minima officia, amet voluptatibus. Ipsa ullam perspiciatis officia voluptate. Est pariatur perferendis vitae quas ad quod commodi incidunt vero. Quos excepturi voluptates exercitationem ullam? Quam eveniet molestias vitae dolor soluta modi fuga eos dolorem facilis, sunt obcaecati suscipit ipsum necessitatibus velit, itaque inventore similique nihil! Tempore pariatur iste at tempora aliquam! Fugiat esse expedita tenetur cum odit, vitae quod ipsa pariatur. A sint, enim architecto fugit omnis esse iste harum accusantium cupiditate ab aliquid impedit, corporis laborum voluptatem reprehenderit error explicabo molestiae commodi adipisci? Cumque perferendis nemo molestiae? Necessitatibus unde, explicabo repudiandae ex repellendus in. Labore cupiditate cumque neque alias excepturi minima omnis! Error, exercitationem minima at ipsam incidunt vero corporis culpa velit quod voluptatum? Magnam, est omnis molestiae consectetur unde incidunt necessitatibus quae maxime iusto ipsa, quis voluptatibus, quisquam natus? Culpa molestiae asperiores optio cupiditate blanditiis consequatur sed ducimus ex deserunt tempora ut repellendus eaque quisquam neque reiciendis sit expedita itaque veniam, nemo voluptas eligendi. Odit accusamus ea soluta molestiae eos molestias quisquam, eveniet dicta ipsa ad libero quaerat necessitatibus, optio alias in ratione hic dolor recusandae ipsam fugiat. Ducimus animi aperiam eos pariatur? Minus tenetur enim recusandae numquam corporis. Dignissimos sequi sapiente maiores voluptatibus officia, beatae enim aspernatur autem repellat harum! Aut fugit officia aperiam harum deserunt architecto autem nam quos, eos voluptates reprehenderit dolorem obcaecati velit atque neque? At quisquam fuga commodi, neque minus dicta vitae ullam repudiandae velit reiciendis eius cum voluptas. Placeat, ab doloribus? Quaerat optio ab est officia deleniti temporibus veritatis odit. Necessitatibus blanditiis doloribus et! Reprehenderit suscipit culpa qui laborum amet fugiat, aliquam inventore in accusantium obcaecati commodi quam. Unde quidem similique veritatis? Repudiandae, quidem velit explicabo deserunt voluptates ipsam dicta iusto sed aut fugiat obcaecati quae ab ut. Quae aut eaque tempora unde! Atque molestiae, quibusdam autem, voluptatum doloribus quasi quisquam aliquid similique earum debitis eius qui facilis, architecto culpa enim harum vel quis repellat beatae eaque nam. Fuga provident odio doloremque omnis, veritatis error. Tempora esse quae, aliquid harum perspiciatis iure a cumque nesciunt praesentium assumenda, eaque facere quidem mollitia culpa iste, dignissimos earum ullam molestiae necessitatibus distinctio! Voluptatem est nobis repellendus vel nesciunt ab debitis molestias ratione obcaecati quod ex provident vitae quo consectetur architecto iusto, officiis blanditiis eum maiores quidem laboriosam harum sequi mollitia? Temporibus dolores omnis praesentium ad excepturi enim commodi quisquam officia asperiores exercitationem similique maxime vero pariatur nihil doloribus sequi, optio, repudiandae, ab ipsum soluta nobis? Facilis est nemo illum adipisci, minus libero sunt dicta, accusantium voluptates eligendi quibusdam necessitatibus? Tempore voluptates amet dolorum eius repellendus commodi eos possimus fugiat, suscipit, perspiciatis fugit natus. Ab earum rerum modi porro doloremque veniam tenetur. Quod accusamus facilis omnis a et aliquam ullam cum debitis recusandae, quibusdam saepe esse ipsa minus ipsum aspernatur perferendis vero. Corporis possimus magni qui odit, tempora saepe laudantium animi ipsum mollitia consequuntur? Nam, natus at. Eaque totam aperiam eius nobis velit cumque. Libero doloribus quis aspernatur beatae ex quibusdam consequuntur totam distinctio corrupti velit. Quaerat nostrum quod sed sequi veritatis possimus obcaecati! Nihil amet nisi ea ipsum cupiditate aut repellendus recusandae quo non perferendis saepe impedit vero soluta, in, nesciunt possimus id vitae deleniti eligendi nam, aspernatur fuga laboriosam doloremque nobis? Saepe quibusdam assumenda ab suscipit rerum sint dolorem velit, accusantium omnis maxime id facere vitae pariatur aliquam adipisci distinctio tempore quas qui illo soluta. Numquam beatae cum ducimus inventore! Laudantium quia minus dolore. Impedit praesentium eos quidem distinctio explicabo. Ab expedita, officiis similique perferendis eaque veniam. Ea accusantium odio veritatis in iste vero velit tempora ex nostrum inventore at doloremque sed asperiores illum error amet architecto unde aperiam nobis ratione, alias quas? Quas, dolorum natus nesciunt laudantium possimus ducimus aspernatur pariatur quod sunt doloremque eius nemo provident accusantium excepturi magnam saepe doloribus commodi quaerat quia. Voluptate deserunt, velit eius ab sit illum laboriosam vel cupiditate ratione hic, cumque, error officiis nulla quidem ipsum harum molestiae. Autem qui nemo animi quasi quaerat? Veritatis, libero numquam nam pariatur rerum suscipit ratione eum sapiente sequi exercitationem quisquam beatae natus mollitia cupiditate illo culpa cumque magnam at debitis placeat facilis dolorem expedita autem! Voluptas ipsum, est eaque, iste vel maiores placeat suscipit, iusto iure laborum velit deserunt debitis eum similique nobis quod officiis ipsa minus! Optio eaque vel necessitatibus sit omnis, labore esse iste dicta nesciunt fuga magni. Tenetur, assumenda quidem! Sunt labore accusantium illum debitis facilis eum porro et eligendi ea soluta, fugiat asperiores, excepturi non. Ipsum harum obcaecati ducimus amet, quidem voluptas consequatur reprehenderit minima dolores excepturi, est expedita dicta quod quis, sint hic facilis ullam voluptatibus blanditiis? Inventore praesentium nostrum quasi iure ex. Recusandae officia beatae, nisi molestias consequuntur distinctio labore sint nihil eligendi voluptatum vitae aut iste ad? Perferendis, inventore omnis hic accusantium, sint laborum mollitia amet libero dolorem obcaecati ullam dolore unde voluptates? Dolore impedit, inventore odit similique atque quod itaque consectetur voluptatibus? Ad ipsam saepe consequuntur doloremque. Repellat tenetur vero dolore provident eos eius corrupti. Blanditiis natus mollitia at id ipsa possimus, voluptate quibusdam culpa, suscipit distinctio asperiores quae vero cupiditate iure explicabo deleniti error, tempore aperiam dicta! Quasi placeat assumenda et numquam dolores necessitatibus vel minus, dolore, nisi omnis tempore aperiam sit, nam expedita? In, mollitia exercitationem veniam beatae officiis cupiditate sit facere voluptatibus hic excepturi ratione ab rerum facilis commodi quia ad nesciunt quasi tenetur.</p> #}
+	<section id="histoire">
+		<img src="{{ asset('images/Design_sketch_of_a_classic_simple_watch_monochrome_side.png')}}" alt="Design sketch of a classic simple watch monochrome">
+		<div class="histoire-description">
+			<h2>Plongez vous dans<br>
+				l'histoire de la
+				<span>Marque</span>
+			</h2>
+			<div class="introduction-histoire-description">
+				<p>Découvrez les racines profondes et les moments marquants qui ont façonné notre marque.
+				</p>
+				<p>À travers notre histoire, plongez dans l'essence même de notre passion pour l'horlogerie et notre engagement envers l'élégance intemporelle.</p>
+			</div>
+			<a href="#">Découvrez notre histoire</a>
+		</div>
+	</section>
 {% endblock %}

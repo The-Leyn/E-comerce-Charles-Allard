@@ -1,16 +1,295 @@
-section {
+section#slider {
     /* padding: 120px 80px; */
     width: 100%;
     height: 100vh;
-    background: red;
+    /* background: red; */
     display: flex;
+    position: relative;
 }
-section .slider-product-information {
+
+section#slider .slider-slide {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* background: lightgreen; */
+}
+
+section#slider .slider-slide {
+    /* background: plum; */
+    background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s ease-out;
+}
+section#slider .slider-slide:nth-child(1) {
+    background: plum;
+    /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
+}
+section#slider .slider-slide:nth-child(2) {
+    background: lightblue;
+    /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
+}
+section#slider .slider-slide:nth-child(3) {
+    background: rgb(250, 188, 164);
+    /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
+}
+
+section#slider div.active-slider {
+    /* background: plum; */
+    /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
+
+    opacity: 1;
+    z-index: 1;
+
+}
+
+/* SLIDER PRODUCT INFORMATION */
+section#slider .slider-product-information {
     padding: 120px 80px;
     width: 40%;
-    background: lightpink;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    /* background: lightpink; */
 }
-section .slider-product-image {
+
+.slider-product-information p, section#collection  .introduction-collection p, .histoire-description p {
+    font-size: var(--fz-25);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-light);
+    line-height: 150%;
+}
+
+.slider-product-information a, section#collection .introduction-collection a, section#collection .description-collection a, .histoire-description a {
+    font-size: var(--fz-20);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    color: var(--secondary-color);
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* gap: 10px; */
+    padding-left: 0;
+    transition: padding .3s ease-in-out;
+    translate: none;
+    transform: translate(0px, 0px);
+    min-width: fit-content;
+
+}
+
+.slider-product-information a:hover, section#collection .introduction-collection a:hover, section#collection .description-collection a:hover, .histoire-description a:hover {
+    padding-left: 34px;
+}
+
+.slider-product-information a:hover::before, section#collection .introduction-collection a:hover::before, section#collection .description-collection a:hover::before, .histoire-description a:hover::before {
+    width: 10px;
+    transform-origin: right;
+}
+
+.slider-product-information a::before, section#collection .introduction-collection a::before, section#collection .description-collection a::before, .histoire-description a::before{
+    content: '';
+    /* width: 60px; */
+    width: 44px;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: width .3s ease-in-out;
+    margin-right: 10px;
+    /* position: absolute; */
+}
+section#slider .slider-product-title h1 {
+    font-family: var(--libre-bodoni-font);
+    font-size: var(--fz-60);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-regular);
+    text-align: center;
+}
+
+section#slider .slider-product-title h2 {
+    display: block;
+    font-family: var(--ubuntu-font);
+    font-size: var(--fz-30);
+    font-style: italic;
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-light);
+    text-align: center;
+}
+
+/* END SLIDER PRODUCT INFORMATION */
+
+.slider-product-image {
     width: 60%;
-    background: lightblue;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: lightblue; */
+    /* position: relative; */
 }
+
+.slider-product-image img {
+    width: 40% !important;
+    position: absolute;
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    /* background: lightblue; */
+}
+.slider-product-image img.active-slider-image {
+    opacity: 1;
+    /* background: lightblue; */
+}
+
+.slider-product-image  svg {
+    /* width: 1404px!important; */
+    width: 100% !important;
+    max-height: 100vh;
+    /* height: 70%!important; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+#minutes-hand, #hours-hand {
+    transform-origin: center;
+    transition: transform 3s;
+}
+.slider-indicators {
+    width: 60px;
+    height: 30%;
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slider-indicators button {
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.slider-indicators button div {
+    width: 2px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.300);
+    position: relative;
+}
+.slider-indicators button div span {
+    display: block;
+    width: 2px;
+    height: 0%;
+    background: rgba(0, 0, 0, 0.300);
+}
+.slider-indicators button div.active span{
+    transition: height 15s linear;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+}
+/* SECTION COLLECTION */
+section#collection {
+    margin: 60px 0;
+    padding: 0 80px;
+    display: flex;
+    gap: 60px;
+}
+section#collection  .introduction-collection {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 40%;
+}
+section#collection  .introduction-collection h2, .histoire-description h2 {
+    font-size: var(--fz-50);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-light);
+
+}
+section#collection  .introduction-collection h2 span, .histoire-description h2 span {
+    display: block;
+    font-size: var(--fz-60);
+    font-weight: var(--fw-regular);
+    font-family: var(--libre-bodoni-font);
+}
+.introduction-collection-description p:first-of-type, .histoire-description p:first-of-type {
+    margin-bottom: 20px;
+}
+section#collection .container-collection {
+    display: flex;
+    overflow: scroll;
+    width: 60%;
+}
+
+/* COLLECTION */
+.collection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    min-width: 460px;
+    width: 460px;
+    padding: 0 30px 30px 30px;
+}
+.collection img {
+    width: 100%;
+}
+.description-collection {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.collection .description-collection h3 {
+    font-size: var(--fz-25);
+    font-weight: var(--fw-regular);
+    letter-spacing: 0.024em;
+}
+.collection .description-collection p {
+    font-size: var(--fz-20);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-light);
+    line-height: 150%;
+}
+
+/* END COLLECTION */
+/* END SECTION COLLECTION */
+/* HISTOIRE SECTION */
+section#histoire {
+    margin: 60px 0;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+section#histoire img {
+    width: 800px;
+}
+section#histoire .histoire-description {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* END HISTOIRE SECTION */
