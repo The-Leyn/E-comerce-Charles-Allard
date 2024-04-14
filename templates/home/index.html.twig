@@ -15,12 +15,12 @@
 			<div class="slider-slide {% if loop.first %}active-slider{% endif %}">
 				<div class="slider-product-information">
 					<div class="slider-product-title">
-						<h1>{{ slider.product.name }}</h1>
+						<h2>{{ slider.product.name }}</h1>
 						{% for information in slider.product.information %}
 							{% if information.key == "mouvement" %}
-								<h2>
+								<h3>
 									{{ information.value |capitalize }}
-								</h2>
+								</h3>
 							{% endif %}
 						{% endfor %}
 					</div>
@@ -123,7 +123,7 @@
 		<div class="container-collection">
 			{% for i in 0..2 %}
 				<div class="collection">
-					<img src="{% if loop.first %}{{ asset('images/watch_cream_dial_front_972px.webp')}}{% elseif loop.index == 2 %}{{ asset('images/watch_sea_blue_dial_golden_case_front.webp')}}{% elseif loop.index == 3 %}{{ asset('images/watch_sea_blue_dial_golden_case_front.webp')}}{% endif %}" alt="{% if loop.first %}Montre héritage avec un cadran crème{% elseif loop.index == 2 %}Montre océanic en or avec un cadran bleu{% endif %}">
+					<img src="{% if loop.first %}{{ asset('images/watch_cream_dial_front_972px.webp')}}{% elseif loop.index == 2 %}{{ asset('images/watch_sea_blue_dial_golden_case_front.webp')}}{% elseif loop.index == 3 %}{{ asset('images/watch_light_dial_golden_diamond_case_women_front.avif')}}{% endif %}" alt="{% if loop.first %}Montre héritage avec un cadran crème{% elseif loop.index == 2 %}Montre océanic en or avec un cadran bleu{% endif %}">
 					<div class="description-collection">
 						<h3>Collection {% if loop.first %}Héritage{% elseif loop.index == 2 %}Océanic{% elseif loop.index == 3 %}Prestige{% endif %}</h3>
 						<p>Explorez notre gamme de montres pour femmes, alliant style raffiné et audace contemporaine pour une touche d'élégance à chaque instant.</p>

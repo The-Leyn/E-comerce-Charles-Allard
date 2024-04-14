@@ -181,4 +181,36 @@ class Product
     {
         return $this->name;
     }
+    public function getPriceWithPromotion(): ?string
+{
+    $discountedPrice = $this->unitPrice; // Prix de base
+    $highestPriorityDiscount = null;
+    $highestPriority = -1;
+    $currentDate = new \DateTimeImmutable('now');
+
+    foreach ($this->category as $category) {
+        foreach ($category->getDiscounts() as $discount) {
+            if ($discount->isActive() && ($discount->getStartDate() === null || $discount->getStartDate() <= $currentDate)
+                && ($discount->getEndDate() === null || $discount->getEndDate() >= $currentDate)) {
+                if ($discount->getPriority() > $highestPriority) {
+                    $highestPriorityDiscount = $discount;
+                    $highestPriority = $discount->getPriority();
+                }
+            }
+        }
+    }
+
+    if ($highestPriorityDiscount !== null) {
+        // Appliquer les remises
+        if ($highestPriorityDiscount->getPercentageDiscount() !== null) {
+            $discountedPrice -= $discountedPrice * ($highestPriorityDiscount->getPercentageDiscount() / 100);
+        }
+        if ($highestPriorityDiscount->getAmountDiscount() !== null) {
+            $discountedPrice -= $highestPriorityDiscount->getAmountDiscount();
+        }
+    }
+
+    return number_format($discountedPrice, 2); // Formater le prix avec deux décimales
+}
+
 }

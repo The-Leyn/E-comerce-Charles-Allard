@@ -32,7 +32,6 @@ class CartController extends AbstractController
                 'quantity' =>  $quantity
             ];
         }
-        // dd($session);
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
             'data' => $data

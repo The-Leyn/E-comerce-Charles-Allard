@@ -15,23 +15,26 @@ section#slider .slider-slide {
     height: 100%;
     display: flex;
     /* background: lightgreen; */
-}
-
-section#slider .slider-slide {
-    /* background: plum; */
     background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%);
     opacity: 0;
     z-index: -1;
     transition: opacity 1s ease-out;
 }
+
+/* section#slider .slider-slide {
+    background: plum;
+} */
+
 section#slider .slider-slide:nth-child(1) {
     background: plum;
     /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
 }
+
 section#slider .slider-slide:nth-child(2) {
     background: lightblue;
     /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
 }
+
 section#slider .slider-slide:nth-child(3) {
     background: rgb(250, 188, 164);
     /* background: linear-gradient(180deg, #C7AF93 0%, rgba(207, 184, 157, 0.91) 27.5%, rgba(216, 193, 168, 0.70691) 74%, rgba(233, 211, 189, 0.305564) 90%, rgba(245, 224, 205, 0) 100%); */
@@ -57,14 +60,19 @@ section#slider .slider-product-information {
     /* background: lightpink; */
 }
 
-.slider-product-information p, section#collection  .introduction-collection p, .histoire-description p {
+.slider-product-information p,
+section#collection .introduction-collection p,
+.histoire-description p {
     font-size: var(--fz-25);
     letter-spacing: 0.024em;
     font-weight: var(--fw-light);
     line-height: 150%;
 }
 
-.slider-product-information a, section#collection .introduction-collection a, section#collection .description-collection a, .histoire-description a {
+.slider-product-information a,
+section#collection .introduction-collection a,
+section#collection .description-collection a,
+.histoire-description a {
     font-size: var(--fz-20);
     letter-spacing: 0.024em;
     font-weight: var(--fw-medium);
@@ -82,16 +90,25 @@ section#slider .slider-product-information {
 
 }
 
-.slider-product-information a:hover, section#collection .introduction-collection a:hover, section#collection .description-collection a:hover, .histoire-description a:hover {
+.slider-product-information a:hover,
+section#collection .introduction-collection a:hover,
+section#collection .description-collection a:hover,
+.histoire-description a:hover {
     padding-left: 34px;
 }
 
-.slider-product-information a:hover::before, section#collection .introduction-collection a:hover::before, section#collection .description-collection a:hover::before, .histoire-description a:hover::before {
+.slider-product-information a:hover::before,
+section#collection .introduction-collection a:hover::before,
+section#collection .description-collection a:hover::before,
+.histoire-description a:hover::before {
     width: 10px;
     transform-origin: right;
 }
 
-.slider-product-information a::before, section#collection .introduction-collection a::before, section#collection .description-collection a::before, .histoire-description a::before{
+.slider-product-information a::before,
+section#collection .introduction-collection a::before,
+section#collection .description-collection a::before,
+.histoire-description a::before {
     content: '';
     /* width: 60px; */
     width: 44px;
@@ -101,7 +118,8 @@ section#slider .slider-product-information {
     margin-right: 10px;
     /* position: absolute; */
 }
-section#slider .slider-product-title h1 {
+
+section#slider .slider-product-title h2 {
     font-family: var(--libre-bodoni-font);
     font-size: var(--fz-60);
     letter-spacing: 0.024em;
@@ -109,7 +127,7 @@ section#slider .slider-product-title h1 {
     text-align: center;
 }
 
-section#slider .slider-product-title h2 {
+section#slider .slider-product-title h3 {
     display: block;
     font-family: var(--ubuntu-font);
     font-size: var(--fz-30);
@@ -122,7 +140,6 @@ section#slider .slider-product-title h2 {
 /* END SLIDER PRODUCT INFORMATION */
 
 .slider-product-image {
-    width: 60%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -131,6 +148,7 @@ section#slider .slider-product-title h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     /* background: lightblue; */
     /* position: relative; */
 }
@@ -146,12 +164,13 @@ section#slider .slider-product-title h2 {
     opacity: 0;
     /* background: lightblue; */
 }
+
 .slider-product-image img.active-slider-image {
     opacity: 1;
     /* background: lightblue; */
 }
 
-.slider-product-image  svg {
+.slider-product-image svg {
     /* width: 1404px!important; */
     width: 100% !important;
     max-height: 100vh;
@@ -162,10 +181,13 @@ section#slider .slider-product-title h2 {
     transform: translate(-50%, -50%);
     z-index: 2;
 }
-#minutes-hand, #hours-hand {
+
+#minutes-hand,
+#hours-hand {
     transform-origin: center;
     transition: transform 3s;
 }
+
 .slider-indicators {
     width: 60px;
     height: 30%;
@@ -180,6 +202,7 @@ section#slider .slider-product-title h2 {
     justify-content: center;
     align-items: center;
 }
+
 .slider-indicators button {
     padding: 10px;
     height: 100%;
@@ -190,23 +213,27 @@ section#slider .slider-product-title h2 {
     background: none;
     cursor: pointer;
 }
+
 .slider-indicators button div {
     width: 2px;
     height: 100%;
     background: rgba(0, 0, 0, 0.300);
     position: relative;
 }
+
 .slider-indicators button div span {
     display: block;
     width: 2px;
     height: 0%;
     background: rgba(0, 0, 0, 0.300);
 }
-.slider-indicators button div.active span{
+
+.slider-indicators button div.active span {
     transition: height 15s linear;
     height: 100%;
     background: rgba(0, 0, 0, 1);
 }
+
 /* SECTION COLLECTION */
 section#collection {
     margin: 60px 0;
@@ -214,27 +241,35 @@ section#collection {
     display: flex;
     gap: 60px;
 }
-section#collection  .introduction-collection {
+
+section#collection .introduction-collection {
     display: flex;
     flex-direction: column;
     gap: 40px;
     width: 40%;
 }
-section#collection  .introduction-collection h2, .histoire-description h2 {
+
+section#collection .introduction-collection h2,
+.histoire-description h2 {
     font-size: var(--fz-50);
     letter-spacing: 0.024em;
     font-weight: var(--fw-light);
 
 }
-section#collection  .introduction-collection h2 span, .histoire-description h2 span {
+
+section#collection .introduction-collection h2 span,
+.histoire-description h2 span {
     display: block;
     font-size: var(--fz-60);
     font-weight: var(--fw-regular);
     font-family: var(--libre-bodoni-font);
 }
-.introduction-collection-description p:first-of-type, .histoire-description p:first-of-type {
+
+.introduction-collection-description p:first-of-type,
+.histoire-description p:first-of-type {
     margin-bottom: 20px;
 }
+
 section#collection .container-collection {
     display: flex;
     overflow: scroll;
@@ -252,19 +287,23 @@ section#collection .container-collection {
     width: 460px;
     padding: 0 30px 30px 30px;
 }
+
 .collection img {
     width: 100%;
 }
+
 .description-collection {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
+
 .collection .description-collection h3 {
     font-size: var(--fz-25);
     font-weight: var(--fw-regular);
     letter-spacing: 0.024em;
 }
+
 .collection .description-collection p {
     font-size: var(--fz-20);
     letter-spacing: 0.024em;
@@ -282,9 +321,13 @@ section#histoire {
     align-items: center;
     justify-content: space-between;
 }
+
 section#histoire img {
-    width: 800px;
+    max-width: 800px;
+    width: 100%;
+    min-width: 500px;
 }
+
 section#histoire .histoire-description {
     max-width: 800px;
     display: flex;
@@ -293,3 +336,256 @@ section#histoire .histoire-description {
 }
 
 /* END HISTOIRE SECTION */
+@media(max-width: 1540px) {
+    section#slider .slider-product-title h2 {
+        font-size: var(--fz-50);
+    }
+
+    section#slider .slider-product-title h3 {
+        font-size: var(--fz-30);
+    }
+
+    .slider-product-information p,
+    section#collection .introduction-collection p,
+    .histoire-description p {
+        font-size: var(--fz-20);
+    }
+
+    section#collection .introduction-collection h2,
+    .histoire-description h2 {
+        font-size: var(--fz-40);
+    }
+
+    section#collection .introduction-collection h2 span,
+    .histoire-description h2 span {
+        font-size: var(--fz-50);
+    }
+
+    .collection .description-collection h3 {
+        font-size: var(--fz-22);
+    }
+}
+
+@media(max-width: 1500px) {
+    section#slider .slider-product-information {
+        padding: 120px 40px;
+    }
+
+    section#collection,
+    section#histoire {
+        padding: 0 40px;
+    }
+
+    .collection {
+        min-width: 380px;
+        width: 380px;
+    }
+
+    section#histoire img {
+        max-width: 700px;
+    }
+}
+
+@media(max-width: 1000px) {
+
+    /* SLIDER */
+    section#slider .slider-product-information {
+        padding: 120px 40px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    section#slider .slider-product-title h2 {
+        font-size: var(--fz-40);
+    }
+
+    section#slider .slider-product-title h3 {
+        font-size: var(--fz-20);
+    }
+
+    .slider-product-information p,
+    section#collection .introduction-collection p,
+    .histoire-description p {
+        font-size: var(--fz-18);
+    }
+
+    .slider-product-information a,
+    section#collection .introduction-collection a,
+    section#collection .description-collection a,
+    .histoire-description a {
+        font-size: var(--fz-18);
+
+    }
+
+    .slider-product-image {
+        width: 100%;
+        height: 55%;
+        top: 8%;
+    }
+
+    .slider-product-image img {
+        max-width: 400px;
+        min-width: 200px;
+    }
+
+    /* END SLIDER */
+    /* SECTION COLLECTION */
+    .collection {
+        min-width: 300px;
+        width: 300px;
+    }
+
+    .collection .description-collection h3 {
+        font-size: var(--fz-20);
+    }
+
+    section#collection .introduction-collection h2,
+    .histoire-description h2 {
+        font-size: var(--fz-30);
+    }
+
+    section#collection .introduction-collection h2 span,
+    .histoire-description h2 span {
+        font-size: var(--fz-40);
+    }
+
+    .collection .description-collection p {
+        font-size: var(--fz-18);
+
+    }
+
+    /* END SECTION COLLECTION */
+    section#histoire img {
+        max-width: 600px;
+        min-width: 360px;
+    }
+
+
+
+}
+
+@media(max-height: 1100px) and (max-width: 1000px) {
+
+    /* SLIDER */
+    section#slider .slider-product-information {
+        padding: 120px 40px 40px 40px;
+    }
+
+    .slider-product-image svg {
+        max-height: 80vh;
+    }
+
+    /* END SLIDER */
+}
+
+@media(max-height: 900px) and (max-width: 1000px) {
+
+    /* SLIDER */
+    section#slider .slider-product-information {
+        padding: 120px 40px 20px 40px;
+    }
+
+    .slider-product-image img {
+        max-width: 320px;
+    }
+
+    /*  END SLIDER */
+}
+@media(max-width: 850px) {
+    /* SECTION COLLECTION */
+    section#collection {
+        gap: 40px;
+      }
+    .collection {
+        padding: 0 20px 20px 20px;
+    }
+
+
+    /* END SECTION COLLECTION */
+}
+@media(max-height: 800px) and (max-width: 1000px) {
+
+    /* SLIDER */
+    section#slider .slider-product-title h2 {
+        font-size: var(--fz-30);
+    }
+
+    section#slider .slider-product-title h3 {
+        font-size: var(--fz-18);
+    }
+
+    section#slider .slider-product-information {
+        gap: 20px;
+    }
+
+    .slider-product-information p,
+    section#collection .introduction-collection p,
+    .histoire-description p {
+        font-size: var(--fz-16);
+    }
+    /* END SLIDER */
+}
+@media(max-width: 770px) {
+    section#slider .slider-product-information {
+        padding: 120px 20px 20px 20px;
+    }
+    section#collection, section#histoire {
+        padding: 0 20px;
+      }
+}
+@media(max-width: 750px) {
+    section#collection {
+        flex-direction: column;
+    }
+    section#collection .introduction-collection, section#collection .container-collection {
+        width: 100%;
+    }
+}
+@media(max-width: 700px) {
+    section#histoire {
+        flex-direction: column;
+        gap: 40px;
+    }
+    section#histoire img {
+        max-width: 450px;
+        min-width: unset;
+      }
+}
+@media(max-height: 750px) and (max-width: 1000px) {
+    
+    .slider-product-image img {
+        max-width: 280px;
+    }
+}
+
+@media(max-height: 600px) and (max-width: 1000px) {
+
+    /* SLIDER */
+    section#slider .slider-product-information {
+        gap: 10px;
+    }
+
+    .slider-product-information p,
+    section#collection .introduction-collection p,
+    .histoire-description p {
+        font-size: var(--fz-14);
+    }
+
+    .slider-product-image {
+        top: 6%;
+    }
+
+    /* END SLIDER */
+}
+
+@media(max-width: 450px) {
+    .slider-product-image svg {
+        min-width: 480px;
+    }
+}
+
+@media(max-width: 370px) {
+    .slider-product-image svg {
+        min-width: 400px;
+    }
+}

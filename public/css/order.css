@@ -1,0 +1,194 @@
+section {
+    padding: 120px 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+}
+section .address-part h2, section .order-recap > h2 {
+    font-size: var(--fz-40);
+    font-weight: var(--fw-light);
+    letter-spacing: 0.024em;
+}
+section .address-part h2 span, section .order-recap > h2 span {
+    display: block;
+    font-family: var(--libre-bodoni-font);
+    font-size: var(--fz-50);
+    font-weight: var(--fw-regular);
+    letter-spacing: 0.024em;
+}
+section .address-part h3 {
+    margin-top: 40px;
+    font-size: var(--fz-20);
+    font-weight: var(--fw-light);
+    letter-spacing: 0.024em;
+    margin-bottom: 20px;
+}
+/* ADDRESS PART */
+/* FORM ADDRESS */
+.address-row {
+    margin-bottom: 20px;
+
+}
+.address-row{
+    display: flex;
+    align-items: center;
+}
+form label {
+    margin-left: 10px;
+    font-size: var(--fz-16);
+    font-weight: var(--fw-light);
+    letter-spacing: 0.024em;
+    line-height: 150%;
+
+}
+form label span {
+    font-weight: var(--fw-regular);
+}
+/* END FORM ADDRESS */
+section p {
+    font-size: var(--fz-16);
+    font-weight: var(--fw-light);
+    letter-spacing: 0.024em;
+    margin-bottom: 20px;
+}
+section p a{
+    letter-spacing: 0.024em;
+    color: var(--secondary-color);
+    font-weight: var(--fw-regular);
+}
+/* END ADDRESS PART */
+/* ORDER RECAP */
+.order-recap {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-left: 1px solid #d4d4d4;
+  }
+  .cart-product-image {
+    width: 193px;
+    min-width: 93px;
+    height: fit-content;
+    background: var(--product-background);
+  }
+  .cart-product-image img {
+    width: 100%;
+  }
+  .cart-product {
+    display: flex;
+    gap: 40px;
+  }
+  /* CART PRODUCT INFORMATION */
+  .cart-product-information {
+    padding-top: 10px;
+    padding-right: 30px;
+    position: relative;
+    width: 100%;
+  }
+  .cart-product-information h2 {
+    font-size: var(--fz-20);
+    font-family: var(--libre-bodoni-font);
+    font-weight: var(--fw-regular);
+    letter-spacing: 0.024em;
+    text-transform: capitalize;
+  }
+  .cart-product-information h2 span {
+    font-family: var(--ubuntu-font);
+    font-weight: var(--fw-light);
+    font-style: italic;
+  }
+  .cart-product-information > h3 {
+    font-size: var(--fz-16);
+    font-family: var(--ubuntu-font);
+    font-weight: var(--fw-medium);
+    color: var(--product-subtitle);
+    margin-top: 10px;
+    letter-spacing: 0.024em;
+  }
+  .cart-product-price-container {
+    margin-top: 40px;
+  }
+  .cart-product-price-container {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cart-product-price-container > span {
+    font-size: var(--fz-18);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-medium);
+    color: var(--tertiary-color);
+    margin-right: 10px;
+    min-width: fit-content;
+  }
+  .cart-product-price-container > span:last-of-type {
+    color: var(--product-subtitle);
+    font-size: var(--fz-16);
+  }
+  .cart-product-price-container h3 {
+    font-size: var(--fz-20);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-medium);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .cart-product-information h3 span:first-of-type {
+    font-size: var(--fz-18);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-medium);
+    color: var(--product-subtitle);
+    position: relative;
+    min-width: fit-content;
+  }
+  .cart-product-information h3 span:first-of-type::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: var(--product-subtitle);
+    height: 2px;
+    width: 100%;
+  }
+  .container-cart-total {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .container-cart-total h3 {
+    font-size: var(--fz-24);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.024em;
+  }
+  .container-cart-total span {
+    color: var(--product-subtitle);
+    font-size: var(--fz-20);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.024em;
+  }
+  .order-recap button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 237px;
+    height: 56px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: var(--fz-16);
+    letter-spacing: 0.024em;
+    font-weight: var(--fw-medium);
+    border: none;
+    cursor: pointer;
+}
+.order-recap button:hover {
+    background: #111;
+}
+/* END ORDER RECAP */
