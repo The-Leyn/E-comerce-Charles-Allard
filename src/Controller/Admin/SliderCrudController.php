@@ -24,6 +24,7 @@ class SliderCrudController extends AbstractCrudController
             // TextField::new('title'),
             // TextEditorField::new('description'),
             AssociationField::new('product')->autocomplete(),
+            TextField::new('background'),
 
         ];
     }

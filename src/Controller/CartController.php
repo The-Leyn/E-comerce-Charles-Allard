@@ -48,12 +48,13 @@ class CartController extends AbstractController
         // On ajoute le produit dans le panier s'il n'y est pas encore. Sinon on incrémente sa quantité
         if (empty($cart[$id])) {
             $cart[$id] = 1;
-        } else {
-            $cart[$id]++;
-        }
-
+        } 
+        // else { // Permet de gérer la quantité or je ne veux pas la gérer
+        //     $cart[$id]++;
+        // }
         // On ajoute la varible panier dans la session
         $session->set('cart', $cart);
+        // dd($cart);
 
         // On redirige vers la page du panier
         return $this->redirectToRoute('app_cart_index');

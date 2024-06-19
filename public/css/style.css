@@ -21,8 +21,8 @@
   --libre-bodoni-font: "Libre Bodoni", serif;
 
   /* FONTS SIZE */
-  --fz-16: 1rem;
   --fz-14: 0.875rem;
+  --fz-16: 1rem;
   --fz-18: 1.125rem;
   --fz-20: 1.25rem;
   --fz-22: 1.375rem;
@@ -36,12 +36,14 @@
   --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;
+  /* LETTER-SPACING */
+  --letter-spacing: 0.024em;
 }
 /* ALL PAGES */
 body {
   font-family: var(--ubuntu-font);
 }
-.full-screen {
+.full-screen, .filter-full-screen-blur {
   position: fixed;
   top: 0;
   left: 0;
@@ -227,6 +229,7 @@ nav a, .container-base-nav-links button  {
     font-family: var(--ubuntu-font);
     font-size: var(--fz-20);
     font-weight: var(--fw-regular);
+    color: var(--secondary-color);
   }
   .footer-element button span {
     display: none;

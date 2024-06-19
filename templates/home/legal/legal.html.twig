@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Charles Allard | Mentions Légales
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('css/legal.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+	<section>
+		<h1>Mentions
+			<span>Légales</span>
+		</h1>
+		<p>Ce site web a été réalisé dans le cadre de la préparation à l'examen du Titre Professionnel "Développeur Web et Web Mobile". Toutes les informations, les produits et autres contenus présents sur ce site sont fictifs et ont été créés à des fins pédagogiques et non commerciales. Nous vous remercions de votre compréhension et vous invitons à naviguer sur le site à des fins d'évaluation et d'apprentissage.</p>
+		<p><span>Responsable du site : </span>Charles Allard</p>
+		<p><span>Adresse : </span>15 Rue Fictive, Paris, France</p>
+		<p><span>Téléphone : </span>+00 123 456 7890</p>
+		<p><span>Email : </span><a href="mailto:contact@charlesallard.com">contact@charlesallard.com</a></p>
+		<p><span>Siret : </span>123 456 789 00000</p>
+		<p><span>Directeur de la publication : </span>Charles Allard</p>
+		<p><span>Déclaration CNIL : </span>N/A</p>
+		<h2>Liens externe</h2>
+		<p>Ce site peut contenir des liens vers des sites externes qui ne sont pas sous le contrôle de Charles Allard. Nous déclinons toute responsabilité quant au contenu ou à l'utilisation de ces sites externes.</p>
+		<h2>responsabilité</h2>
+		<p>Charles Allard ne peut être tenue responsable de tout dommage direct, indirect, accessoire, spécial, consécutif ou punitif résultant de l'utilisation ou de l'incapacité à utiliser ce site.</p>
+		<h2>Modification des Mentions Légales</h2>
+		<p>Charles Allard se réserve le droit de modifier ces mentions légales à tout moment. Il est de votre responsabilité de consulter régulièrement ces mentions pour être informé de toute modification.</p>
+	</section>
+{% endblock %}

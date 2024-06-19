@@ -1,15 +1,247 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Toutes les montres
+{% block title %}Charles Allard | Toutes les montres
 {% endblock %}
 {% block stylesheets %}
 	<link href="{{ asset('css/product.css') }}" rel="stylesheet"/>
 {% endblock %}
-{# {% block javascripts %}
-	<script src="{{ asset('js/single-product.js') }}" defer></script>
-{% endblock %} #}
+{% block javascripts %}
+	<script src="{{ asset('js/filter-product.js') }}" defer></script>
+	<script src="{{ asset('js/filter.js') }}" defer></script>
+	
+
+{% endblock %}
 {% block body %}
 
+	<div class="filter-full-screen-blur hide"></div>
+	<div class="filter-container">
+		<button>
+			<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_324_841)">
+					<path d="M18.8873 20.1748L19.8096 19.2524L1.11288 0.555756L0.190569 1.47807L18.8873 20.1748Z" fill="black"/>
+					<path d="M9.06108 10.1167L9.9834 11.0391L19.5421 1.48035L18.6198 0.558033L9.06108 10.1167Z" fill="black"/>
+					<path d="M0.000288245 19.2259L0.923828 20.147L8.75194 12.298L7.8284 11.3769L0.000288245 19.2259Z" fill="black"/>
+				</g>
+				<defs>
+					<clipPath id="clip0_324_841">
+						<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+					</clipPath>
+				</defs>
+			</svg>
+		</button>
+		<div class="filter-container-information">
+			<h4>Filtrer Par</h4>
+			<p><span>149</span> Montres</p>
+		</div>
+		<form action="#" id="filterForm">
+			<div class="all-filters">
+				<div class="filter close">
+					<button type="button">
+						<h5>Collection</h5>
+						<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.6496 1.55566H9.34961L9.34961 19.5557H10.6496L10.6496 1.55566Z" fill="black"/>
+							<path d="M1 9.90557L1 11.2056L19 11.2056V9.90557L1 9.90557Z" fill="black"/>
+						</svg>
+					</button>
+					<div class="filter-option">
+						<input type="checkbox" id="heritage" name="heritage">
+						<label for="heritage">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Héritage</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="prestige" name="prestige">
+						<label for="prestige">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Prestige</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="oceanic" name="oceanic">
+						<label for="oceanic">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Océanic</h6>
+						</label>
+					</div>
+				</div>
+				<div class="filter close">
+					<button type="button">
+						<h5>Sexe</h5>
+						<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.6496 1.55566H9.34961L9.34961 19.5557H10.6496L10.6496 1.55566Z" fill="black"/>
+							<path d="M1 9.90557L1 11.2056L19 11.2056V9.90557L1 9.90557Z" fill="black"/>
+						</svg>
+					</button>
+					<div class="filter-option">
+						<input type="checkbox" id="homme" name="homme">
+						<label for="homme">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Homme</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="femme" name="femme">
+						<label for="femme">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Femme</h6>
+						</label>
+					</div>
+				</div>
+				<div class="filter close">
+					<button type="button">
+						<h5>Matériaux</h5>
+						<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.6496 1.55566H9.34961L9.34961 19.5557H10.6496L10.6496 1.55566Z" fill="black"/>
+							<path d="M1 9.90557L1 11.2056L19 11.2056V9.90557L1 9.90557Z" fill="black"/>
+						</svg>
+					</button>
+					<div class="filter-option">
+						<input type="checkbox" id="orRose" name="orRose">
+						<label for="orRose">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Or rose</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="orJaune" name="orJaune">
+						<label for="orJaune">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Or jaune</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="acier" name="acier">
+						<label for="acier">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>Acier</h6>
+						</label>
+					</div>
+				</div>
+				<div class="filter close">
+					<button type="button">
+						<h5>Prix</h5>
+						<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.6496 1.55566H9.34961L9.34961 19.5557H10.6496L10.6496 1.55566Z" fill="black"/>
+							<path d="M1 9.90557L1 11.2056L19 11.2056V9.90557L1 9.90557Z" fill="black"/>
+						</svg>
+					</button>
+					<div class="filter-option">
+						<input type="checkbox" id="-10000" name="-10000">
+						<label for="-10000">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>{{ "<" | raw }} 10 000</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="10000-20000" name="10000-20000">
+						<label for="10000-20000">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>10 000 - 20 000</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="20000-40000" name="20000-40000">
+						<label for="20000-40000">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>20 000 - 40 000</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="40000-60000" name="40000-60000">
+						<label for="40000-60000">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>40 000 - 60 000</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="60000-80000" name="60000-80000">
+						<label for="60000-80000">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>60 000 - 80 000</h6>
+						</label>
+					</div>
+					<div class="filter-option">
+						<input type="checkbox" id="+80000" name="+80000">
+						<label for="+80000">
+							<span>
+								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M1.00293 9.71094L6.11035 14.8184L7.03266 13.896L1.92524 8.78862L1.00293 9.71094Z" fill="white"/>
+									<path d="M6.94097 15.649L7.86328 16.5713L18.9434 5.49121L18.021 4.5689L6.94097 15.649Z" fill="white"/>
+								</svg>
+							</span>
+							<h6>{{ ">" | raw }} 80 000</h6>
+						</label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
 	<section>
 		<h1>Toutes les
 			<span>Montres</span>
@@ -17,7 +249,7 @@
 		<p>Bienvenue dans la collection complète de montres
 			<strong>CHARLES ALLARD</strong>.</p>
 		<p>Découvrez l'élégance intemporelle et le savoir-faire artisanal qui caractérisent chaque pièce de cette marque prestigieuse. De la sophistication classique aux designs contemporains, notre sélection de montres incarne l'essence même du style et de la qualité.</p>
-		<div class="filter-container">
+		<div class="filter-toggle-container">
 			<button>Filtres
 				<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M10.6496 1.55566H9.34961L9.34961 19.5557H10.6496L10.6496 1.55566Z" fill="white"/>
@@ -27,86 +259,7 @@
 			<span>{{products|length}} Montres</span>
 		</div>
 		<div class="container-product">
-			{% for product in products %}
-				<a href="{{ path('app_product_show', {id: product.id}) }}">
-					<div class="container-product-image">
-						<img src="{{ vich_uploader_asset(product.productImages[0], 'imageFile') }}" alt="{{ product.productImages[0].name }}">
-					</div>
-					<div class="container-product-information">
-						{% set highestPriorityDiscount = null %}
-						{% set highestPriority = -1 %}
-						{% set currentDate = "now"|date('Y-m-d H:i:s') %}
-						{% for category in product.category %}
-							{% for discount in category.discounts %}
-								{% if discount.active == true and (discount.startDate is null or discount.startDate|date('Y-m-d H:i:s') <= currentDate) %}
-									{% if discount.endDate is null or discount.endDate|date('Y-m-d H:i:s') >= currentDate %}
-										{% if discount.priority > highestPriority %}
-											{% set highestPriorityDiscount = discount %}
-											{% set highestPriority = discount.priority %}
-										{% endif %}
-									{% endif %}
-								{% endif %}
-							{% endfor %}
-						{% endfor %}
-						<div class="product-information-top">
-							<h2>{{ product.name |capitalize}}
-								{% for information in product.information %}
-									{% if information.key == "mouvement" %}
-										<span>
-											{{ information.value |capitalize }}
-										</span>
-									{% endif %}
-								{% endfor %}
-							</h2>
-							{% if highestPriorityDiscount is not null %}
-								{% if highestPriorityDiscount.percentageDiscount is not null %}
-									<span>
-										-{{ highestPriorityDiscount.percentageDiscount }}%
-									</span>
-								{% endif %}
-								{% if highestPriorityDiscount.amountDiscount is not null %}
-									<span>
-										-{{ highestPriorityDiscount.amountDiscount }}€
-									</span>
-								{% endif %}
-							{% endif %}
-						</div>
-						<div class="product-information-bottom">
-							<h3>
-								{% for information in product.information %}
-									{% if information.key == "taille" or information.key == "materiaux" %}
-										{{ information.value }}
-									{% endif %}
-								{% endfor %}
-							</h3>
-							<div class="product-price">
-								{% if highestPriorityDiscount is not null %}
-									{% set discountedPrice = product.unitPrice %}
-									{% if highestPriorityDiscount.percentageDiscount is not null %}
-										{% set discountedPrice = discountedPrice - (discountedPrice * (highestPriorityDiscount.percentageDiscount / 100)) %}
-									{% endif %}
-									{% if highestPriorityDiscount.amountDiscount is not null %}
-										{% set discountedPrice = discountedPrice - highestPriorityDiscount.amountDiscount %}
-									{% endif %}
-									<h3>
-										{{ discountedPrice|number_format(0, '.', ' ') }}
-										€
-										<span>
-											{{ product.unitPrice|number_format(0, '.', ' ') }}
-											€
-										</span>
-									</h3>
-								{% else %}
-									<h3>
-										{{ product.unitPrice|number_format(0, '.', ' ') }}
-										€
-									</h3>
-								{% endif %}
-							</div>
-						</div>
-					</div>
-				</a>
-			{% endfor %}
+			{% include "product/componant.html.twig" %}
 		</div>
 	</section>
 {% endblock %}

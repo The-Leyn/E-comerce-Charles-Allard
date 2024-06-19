@@ -19,44 +19,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class OrderController extends AbstractController
 {
-    #[Route('/order/create', name: 'app_order_create')]
-    public function index(SessionInterface $session, ProductRepository $productRepository): Response
-    {
-        // Si l'utilisateur n'est pas connecté redirige vers la page de connexion.
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
-        // Création du formulaire
-        // $form = $this->createForm(OrderType::class, null, [
-        //     'user' => $this->getUser()
-        // ]);
-
-        //Récupération du panier
-        $cart = $session->get('cart', []);
-        $data = [];
-
-        foreach ($cart as $id => $quantity) {
-            $product = $productRepository->find($id);
-
-            $data[] = [
-                'product' => $product,
-                'quantity' =>  $quantity
-            ];
-        }
-        // dd($data);
-        if (empty($data)) {
-            return $this->redirectToRoute('app_product');
-        }
-        return $this->render('order/index.html.twig', [
-            // Je retourne le formulaire à la vue
-            // 'form' => $form->createView(),
-            'data' => $data
-        ]);
-    }
-
     #[Route('/order/create-session-stripe', name: 'app_order_create_session_stripe')]
     public function stripeCheckout(SessionInterface $session, ProductRepository $productRepository): RedirectResponse
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+
         \Stripe\Stripe::setApiKey('sk_test_51P2clnRsb96WtGtNw33kguEYbuAf2aL1sYuHp0NPhNpd429Pp8TTXsG5vaVCUIDqxgsgbWK6hjjJQ5XUZLGy4lGM00ATIegRQs');
         $session->set('payment_process_in_progress', true);
 
@@ -118,6 +87,8 @@ class OrderController extends AbstractController
             // Redirect the user to another page if they are not engaged in a payment process
             return $this->redirectToRoute('app_home');
         }
+        // Retire tous les articles du panier
+        $session->set('cart' ,[]); 
         return $this->render('order/success.html.twig', []);
     }
     #[Route('/order/error', name: 'app_order_error')]
@@ -140,7 +111,6 @@ class OrderController extends AbstractController
         // Votre secret de webhook Stripe
         $endpointSecret = 'whsec_1cd14f6cc77db66af332f68d85f44a18f641cb7dca947b2a5bf524b0633824ae';
 
-        $user = $this->getUser();
 
         try {
             // Vérifier la signature de la requête

@@ -12,7 +12,7 @@
 
 	<section id="slider">
 		{% for slider in sliders %}
-			<div class="slider-slide {% if loop.first %}active-slider{% endif %}">
+			<div class="slider-slide {% if loop.first %}active-slider{% endif %}" style="background:{{ slider.background }} ;">
 				<div class="slider-product-information">
 					<div class="slider-product-title">
 						<h2>{{ slider.product.name }}</h1>
@@ -118,7 +118,7 @@
 				<p>Explorez nos sélections de montres de pointe, où chaque pièce incarne l'élégance et l'innovation.</p>
 				<p>Découvrez dès maintenant les dernières tendances horlogères et trouvez la montre parfaite pour sublimer votre style quotidien.</p>
 			</div>
-			<a href="#">Découvrez nos collections</a>
+			<a href="{{ path('app_collections') }}">Découvrez nos collections</a>
 		</div>
 		<div class="container-collection">
 			{% for i in 0..2 %}
@@ -127,7 +127,7 @@
 					<div class="description-collection">
 						<h3>Collection {% if loop.first %}Héritage{% elseif loop.index == 2 %}Océanic{% elseif loop.index == 3 %}Prestige{% endif %}</h3>
 						<p>Explorez notre gamme de montres pour femmes, alliant style raffiné et audace contemporaine pour une touche d'élégance à chaque instant.</p>
-						<a href="#">En savoir plus</a>
+						<a href="{{ path('app_collections') }}">En savoir plus</a>
 					</div>
 				</div>
 			{% endfor %}
@@ -145,7 +145,7 @@
 				</p>
 				<p>À travers notre histoire, plongez dans l'essence même de notre passion pour l'horlogerie et notre engagement envers l'élégance intemporelle.</p>
 			</div>
-			<a href="#">Découvrez notre histoire</a>
+			<a href="{{ path('app_history') }}">Découvrez notre histoire</a>
 		</div>
 	</section>
 {% endblock %}

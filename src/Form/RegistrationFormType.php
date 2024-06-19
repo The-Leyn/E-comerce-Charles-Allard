@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -26,18 +27,34 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Entrer votre prénom',
                 ],
+                'consraints' => [
+                    new NotBlank([
+                        'message' => 'Entrer votre prénom',
+                    ]),
+                ]
             ])
             ->add('lastname', TextType::class,[
                 'label' => 'Nom*',
                 'attr' => [
                     'placeholder' => 'Entrer votre nom',
                 ],
+                'consraints' => [
+                    new NotBlank([
+                        'message' => 'Entrer votre nom',
+                    ]),
+                ]
             ])
             ->add('email', EmailType::class,[
                 'label' => 'E-mail*',
                 'attr' => [
                     'placeholder' => 'Entrer votre adresse email',
                 ],
+                'consraints' => [
+                    new NotBlank([
+                        'message' => 'Entrer votre adresse email',
+                    ]),
+                    new Email(['message' => `L'email "{{ value }}" n'est pas une adresse email valide.`]),
+                ]
             ])
             // ->add('plainPassword', PasswordType::class, [
             //     // instead of being set onto the object directly,
@@ -64,17 +81,17 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Entrer un mot de passe',
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit au moins faire {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'first_options'  => ['label' => 'Mot de passe*', 'attr' => ['placeholder' => 'Entrer votre mot de passe']],
@@ -96,7 +113,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Vous devez accepter les conditions général',
+                        'message' => 'Vous devez accepter les conditions générales.',
                     ]),
                 ],
                 // 'attr' => [

@@ -1,16 +1,12 @@
-console.log("Hello World !!!");
-
 // FOOTER ELEMENT ACCORDION
 
 const footerElements = document.querySelectorAll(".footer-element");
-console.log(footerElements);
 footerElements.forEach((element) => {
   const footerElementBtn = element.querySelector("button");
 
   const allLinksElement = element.querySelectorAll(
     ".container-elements-links a"
   );
-  console.log(allLinksElement.length);
 
   footerElementBtn.addEventListener("click", () => {
     console.log('in');

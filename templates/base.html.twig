@@ -7,7 +7,8 @@
 			{% block title %}Charles Allard
 			{% endblock %}
 		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		{# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> #}
+		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/png">
 
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet"/> 
 		{% block stylesheets %}{% endblock %}
@@ -73,14 +74,14 @@
 					<a href="{{ path('app_product') }}">Montres</a>
 					<a href="{{ path('app_history') }}">Histoire</a>
 					<a href="{{ path('app_knowledge') }}">Savoir-faire</a>
-					<a href="#">Contact</a>
+					{# <a href="#">Contact</a> #}
 				</div>
 				<div class="container-watches-nav-links hide">
 					<a href="{{ path('app_product') }}">Toutes les montres</a>
-					<a href="#">Nos Collections</a>
+					<a href="{{ path('app_collections') }}">Nos Collections</a>
 					<a href="#">Nouveautés</a>
 				</div>
-				<a href="#">
+				<a href="{% if app.user is null %}{{ path('app_login') }}{% endif %}">
 					<svg width="32" height="33" viewbox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M15.9993 15.2223C18.9449 15.2223 21.3327 12.8345 21.3327 9.889C21.3327 6.94348 18.9449 4.55566 15.9993 4.55566C13.0538 4.55566 10.666 6.94348 10.666 9.889C10.666 12.8345 13.0538 15.2223 15.9993 15.2223Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 						<path d="M26.6663 27.2362V22.4222C26.6663 21.5735 26.3292 20.7595 25.7291 20.1594C25.129 19.5593 24.315 19.2222 23.4663 19.2222H8.53301C7.68432 19.2222 6.87038 19.5593 6.27027 20.1594C5.67015 20.7595 5.33301 21.5735 5.33301 22.4222V27.2362" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
@@ -142,7 +143,7 @@
 					</button>
 					<div class="container-elements-links">
 						<a href="{{ path('app_product') }}">Toutes les montres</a>
-						<a href="#">Nos Collections</a>
+						<a href="{{ path('app_collections') }}">Nos Collections</a>
 						<a href="#">Nouveautés</a>
 					</div>
 				</div>
@@ -184,7 +185,7 @@
 						</span>
 					</button>
 					<div class="container-elements-links">
-						<a href="#">Contact</a>
+						{# <a href="#">Contact</a> #}
 						<a href="#">Se connecter</a>
 					</div>
 				</div>
@@ -220,10 +221,10 @@
 			</div>
 			<div class="footer-bottom">
 				<div class="links-bottom-footer">
-					<a href="#">Mentions légales</a>
-					<a href="#">Politiques de confidentialités</a>
-					<a href="#">Conditions générales de vente</a>
-					<a href="#">Conditions d'utilisation</a>
+					<a href="{{path('app_legal_mention')}}">Mentions légales</a>
+					<a href="{{path('app_privacy_policy')}}">Politiques de confidentialités</a>
+					<a href="{{path('app_sales_conditions')}}">Conditions générales de vente</a>
+					<a href="{{path('app_terms_conditions')}}">Conditions d'utilisation</a>
 				</div>
 				<p>© {{ "now"|date("Y") }} Charles Allard - Tous droits réservés</p>
 			</div>

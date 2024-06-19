@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
+{% block title %}Charles Allard | Connexion
 {% endblock %}
 {% block stylesheets %}
 	<link href="{{ asset('css/form.css') }}" rel="stylesheet"/>
@@ -35,7 +35,7 @@
 				<label for="inputPassword">Mot de passe</label>
 				<input type="password" name="password" placeholder="Entrer votre mot de passe" id="inputPassword" class="form-control" autocomplete="current-password" required>
 			</div>
-			<a href="#">Mot de passe oublié ?</a>
+			{# <a href="#">Mot de passe oublié ?</a> #}
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 			<button type="submit">Se connecter

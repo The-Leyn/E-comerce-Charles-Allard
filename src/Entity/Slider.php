@@ -16,6 +16,9 @@ class Slider
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Product $product = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $background = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Slider
     public function setProduct(?Product $product): static
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getBackground(): ?string
+    {
+        return $this->background;
+    }
+
+    public function setBackground(?string $background): static
+    {
+        $this->background = $background;
 
         return $this;
     }

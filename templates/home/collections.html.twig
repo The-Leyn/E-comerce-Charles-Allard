@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Charles Allard | Collections
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('css/collections.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+	<section>
+		<h1>Toutes nos<span>Collections</span></h1>
+		<p>Explorez nos collections de montres <span>CHARLES ALLARD</span>, soigneusement conçues pour capturer l'essence du style et de l'élégance.</p>
+		<p>Chaque collection incarne une exploration unique de l'esthétique et de la performance horlogères, alliant innovation, artisanat et sophistication pour offrir des pièces qui se démarquent.</p>
+	</section>
+		<div class="container-collection">
+			{% for i in 0..2  %}
+				<div class="collection">
+					<div class="img-collection">
+						<img src="{% if loop.first %}{{asset('images/watch_blue_dial_golden_case_big_Angle.avif')}}{% elseif loop.index == 2 %}{{ asset('images/watch_white_dial_golden_case_malte.avif')}}{% elseif loop.index == 3 %}{{ asset('images/watch_sea_blue_dial_golden_case.webp')}}{% endif %}" alt="{% if loop.first %}Collection Héritage{% elseif loop.index == 2 %}Collection Prestige{% elseif loop.index == 3 %}Collection Océanic{% endif %}">
+					</div>
+
+						<div class="collection-description">
+							<h2>{% if loop.first %}Héritage{% elseif loop.index == 2 %}Prestige{% elseif loop.index == 3 %}Océanic{% endif %}</h2>
+							<p>{% if loop.first %}Reflet d’une esthétique minimaliste qui mêle tension et courbes dans un esprit contemporain, la collection Héritage impose sa personalité au travers de fins boîtiers dont l’élégance s’inspire des modèles des années 1950.{% elseif loop.index == 2 %}Découvrez l'expression ultime du raffinement avec notre collection Prestige, où chaque montre incarne l'excellence horlogère et le prestige inégalé, parfaites pour les occasions les plus exclusives.{% elseif loop.index == 3 %}Embrassez votre esprit d'aventure avec notre collection Oceanic, où chaque montre est synonyme de liberté et de passion pour l'exploration, offrant un style distinctif et une performance inégalée pour chaque étape de votre voyage.{% endif %}</p>
+							<a href="">
+								Découvrir
+								<svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g clip-path="url(#clip0_324_848)">
+										<path d="M9.83755 20.2318L17.626 12.4434L16.7037 11.521L8.91524 19.3095L9.83755 20.2318Z" fill="white"/>
+										<path d="M18.9078 11.4707L19.8301 10.5483L9.88947 0.607729L8.96715 1.53004L18.9078 11.4707Z" fill="white"/>
+									</g>
+									<defs>
+										<clipPath id="clip0_324_848">
+											<rect width="20" height="20" fill="white" transform="translate(0 0.555664)"/>
+										</clipPath>
+									</defs>
+								</svg>
+							</a>
+						</div>
+				</div>
+			{% endfor %}
+		</div>
+{% endblock %}
