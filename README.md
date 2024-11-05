@@ -12,23 +12,25 @@ au long de ma formation.
 
 ## Les Objectifs du Projet était les suivants :
 
-1. Faciliter l’expérience utilisateur : Offrir une interface conviviale et intuitive qui
+1. **Faciliter l’expérience utilisateur :** Offrir une interface conviviale et intuitive qui
 permet aux utilisateurs de naviguer facilement à travers les produits et de
 finaliser leurs achats sans friction.
 
-2. Optimisation pour les appareils mobile : Assurer que le site est pleinement
+2. **Optimisation pour les appareils mobile :** Assurer que le site est pleinement
 responsive, offrant une expérience utilisateur cohérente sur tous les appareils, y
 compris les smartphones et les tablettes.
 
-3. Sécurité et confidentialité : Mettre en place des mesures de sécurité robustes
+3. **Sécurité et confidentialité :** Mettre en place des mesures de sécurité robustes
 pour protéger et garantir l’intégrité des données utilisateur y compris les
 informations de paiement et les données personnelles.
 
-4. Gestion des produits et des promotions : Fournir une interface
+4. **Gestion des produits et des promotions :** Fournir une interface
 d’administration efficace permettant à l’équipe de gestion de mettre à jour
 facilement le catalogue de produits et de gérer les promotions des produits.
 
-5. Intégration des fonctionnalités de paiement : Intégrer des solutions de
+5. **Intégration des fonctionnalités de paiement :** Intégrer des solutions de
 paiement sécurisées et populaires pour permettre aux clients de régler leurs
 achats en toutes confiance.
 
+
+La présentation de ce projet à un jury m'as permis d'obtenir mon titre Professionnel "Développeur Web et Web Mobile".
